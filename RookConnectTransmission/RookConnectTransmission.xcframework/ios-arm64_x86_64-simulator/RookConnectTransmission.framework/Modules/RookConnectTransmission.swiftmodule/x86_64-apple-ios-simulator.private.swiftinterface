@@ -1,0 +1,778 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)
+// swift-module-flags: -target x86_64-apple-ios16.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RookConnectTransmission
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import CoreData
+import Foundation
+import HealthKit
+@_exported import RookConnectTransmission
+import Swift
+import _Concurrency
+import _StringProcessing
+@_inheritsConvenienceInitializers @objc(RookSleepDataExt) public class RookSleepDataExt : CoreData.NSManagedObject {
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
+}
+extension RookConnectTransmission.RookBodyDataTransmissionDTO {
+  public class RookBodyDataTransmissionDTOBuilder {
+    public init()
+    @discardableResult
+    public func addDate(date: Foundation.Date) -> RookConnectTransmission.RookBodyDataTransmissionDTO.RookBodyDataTransmissionDTOBuilder
+    @discardableResult
+    public func addMetaData(sex: Swift.String?, gender: Swift.String?, dateOfBirth: Swift.String?, age: Swift.Int?, country: Swift.String?, state: Swift.String?, city: Swift.String?, ethnicity: Swift.String?, income: Swift.String?, maritalStatus: Swift.String?, education: Swift.String?) -> RookConnectTransmission.RookBodyDataTransmissionDTO.RookBodyDataTransmissionDTOBuilder
+    @discardableResult
+    public func addBodyHealthScore(bodyHealthScore: Swift.Int?) -> RookConnectTransmission.RookBodyDataTransmissionDTO.RookBodyDataTransmissionDTOBuilder
+    @discardableResult
+    public func addMesurements(waistCircumferenceCMNumber: Swift.Int?, hipCircumferenceCMNumber: Swift.Int?, chestCircumferenceCMNumber: Swift.Int?) -> RookConnectTransmission.RookBodyDataTransmissionDTO.RookBodyDataTransmissionDTOBuilder
+    @discardableResult
+    public func addBodyComposition(boneCompositionPercentageNumber: Swift.Int?, muscleCompositionPercentageNumber: Swift.Int?, weightKgNumber: Swift.Int?, heightCMNumber: Swift.Int?, bmiNumber: Swift.Int?) -> RookConnectTransmission.RookBodyDataTransmissionDTO.RookBodyDataTransmissionDTOBuilder
+    @discardableResult
+    public func addBloodData(bloodGlucoseDayAvgMgPerDLNumber: Swift.Int?, bloodGlucoseGranularDataMgPerDL: [RookConnectTransmission.BloodGlucoseGranularDataMgPerDL]?, bloodPressureDayAvgSystolicDiastolicBpNumber: [RookConnectTransmission.BloodPressureSystolicDiastolicBpNumber]?, bloodPressureGranularDataSystolicDiastolicBpNumber: [RookConnectTransmission.BloodPressureGranularDataSystolicDiastolicBpNumber]?) -> RookConnectTransmission.RookBodyDataTransmissionDTO.RookBodyDataTransmissionDTOBuilder
+    @discardableResult
+    public func addHydrationData(waterTotalConsumptionMlNumber: Swift.Int?, hydrationAmountGranularDataMlNumber: [RookConnectTransmission.HydrationAmountGranularDataMlNumber]?, hydrationLevelGranularDataPercentageNumber: [RookConnectTransmission.HydrationLevelGranularDataPercentageNumber]?) -> RookConnectTransmission.RookBodyDataTransmissionDTO.RookBodyDataTransmissionDTOBuilder
+    @discardableResult
+    public func addHeartRateData(hrMaxBPM: Swift.Int?, hrMinimumBPM: Swift.Int?, hrAvgBPM: Swift.Int?, hrRestingBPM: Swift.Int?, hrGranularDataBPM: [RookConnectTransmission.HrGranularDataBPM]?) -> RookConnectTransmission.RookBodyDataTransmissionDTO.RookBodyDataTransmissionDTOBuilder
+    @discardableResult
+    public func addHRVData(hrvAvgRmssdNumber: Swift.Int?, hrvAvgSdnnNumber: Swift.Int?, hrvSdnnGranularDataNumber: [RookConnectTransmission.HrvSdnnGranularDataNumber]?, hrvRmssdGranularDataNumber: [RookConnectTransmission.HrvRmssdGranularDataNumber]?) -> RookConnectTransmission.RookBodyDataTransmissionDTO.RookBodyDataTransmissionDTOBuilder
+    @discardableResult
+    public func addMoodData(moodMinimumScale: Swift.Int?, moodAvgScale: Swift.Int?, moodGranularDataScale: [RookConnectTransmission.MoodGranularDataScale]?, moodMaxScale: Swift.Int?, moodDeltaScale: Swift.Int?) -> RookConnectTransmission.RookBodyDataTransmissionDTO.RookBodyDataTransmissionDTOBuilder
+    @discardableResult
+    public func addFoodData(foodIntakeNumber: Swift.Int?, caloriesIntakeNumber: Swift.Int?, proteinIntakeGNumber: Swift.Int?, sugarIntakeGNumber: Swift.Int?, fatIntakeGNumber: Swift.Int?, transFatIntakeGNumber: Swift.Int?, carbohydratesIntakeGNumber: Swift.Int?, fiberIntakeGNumber: Swift.Int?, alcoholIntakeGNumber: Swift.Int?, sodiumIntakeMgNumber: Swift.Int?, cholesterolIntakeMgNumber: Swift.Int?) -> RookConnectTransmission.RookBodyDataTransmissionDTO.RookBodyDataTransmissionDTOBuilder
+    @discardableResult
+    public func addSaturationData(saturationAvgPercentage: Swift.Int?, saturationGranularDataPercentage: [RookConnectTransmission.SaturationGranularDataPercentage]?, vo2MaxMlPerMinPerKg: Swift.Int?, vo2GranularDataLiterPerMin: [RookConnectTransmission.Vo2GranularDataLiterPerMin]?) -> RookConnectTransmission.RookBodyDataTransmissionDTO.RookBodyDataTransmissionDTOBuilder
+    @discardableResult
+    public func addTemperatureData(temperatureMinimumCelsius: Swift.Int?, temperatureAvgCelsius: Swift.Int?, temperatureMaxCelsius: Swift.Int?, temperatureDeltaCelsius: Swift.Int?, temperatureGranularDataCelsius: [RookConnectTransmission.TemperatureGranularDataCelsius]?) -> RookConnectTransmission.RookBodyDataTransmissionDTO.RookBodyDataTransmissionDTOBuilder
+    public func buildBodyDataTransmission() -> RookConnectTransmission.RookBodyDataTransmissionDTO
+    @objc deinit
+  }
+}
+final public class RookSleepTransmissionManager {
+  public init()
+  final public func enqueueSleepSummary(with extractionData: Foundation.Data, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
+  final public func enqueueSleepSummary(with summary: RookConnectTransmission.RookSleepDataTransmissionDTO, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
+  final public func getSleepSummariesStored(completion: @escaping (Swift.Result<[RookConnectTransmission.RookSleepSummaryTransmission], Swift.Error>) -> Swift.Void)
+  final public func uploadSleepSummaries(completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+extension RookConnectTransmission.RookBodyDataExt {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<RookConnectTransmission.RookBodyDataExt>
+  @objc @NSManaged dynamic public var dateTime: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var bodyData: Foundation.Data? {
+    @objc get
+    @objc set
+  }
+}
+extension RookConnectTransmission.RookBodyDataExt : Swift.Identifiable {
+  public typealias ID = Swift.ObjectIdentifier
+}
+public struct JSONParameterEncoder : RookConnectTransmission.ParameterEncoder {
+  public static func encode(urlRequest: inout Foundation.URLRequest, with parameters: RookConnectTransmission.Parameters) throws
+}
+extension RookConnectTransmission.RookSleepDataExt {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<RookConnectTransmission.RookSleepDataExt>
+  @objc @NSManaged dynamic public var sleepData: Foundation.Data? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var dateTime: Swift.String? {
+    @objc get
+    @objc set
+  }
+}
+extension RookConnectTransmission.RookSleepDataExt : Swift.Identifiable {
+  public typealias ID = Swift.ObjectIdentifier
+}
+extension RookConnectTransmission.RookPhysicalDataExt {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<RookConnectTransmission.RookPhysicalDataExt>
+  @objc @NSManaged dynamic public var dateTime: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var physicalData: Foundation.Data? {
+    @objc get
+    @objc set
+  }
+}
+extension RookConnectTransmission.RookPhysicalDataExt : Swift.Identifiable {
+  public typealias ID = Swift.ObjectIdentifier
+}
+public enum HTTPMethod : Swift.String {
+  case get
+  case post
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc(RookBodyDataExt) public class RookBodyDataExt : CoreData.NSManagedObject {
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
+}
+final public class RookPhysicalTransmissionManager {
+  public init()
+  final public func enqueuePhysicalSummary(with extractionData: Foundation.Data, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
+  final public func enqueuePhysicalSummary(with physicalDTO: RookConnectTransmission.RookPhysicalDataTransmissionDTO, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
+  final public func getPhysicalSummariesStored(completion: @escaping (Swift.Result<[RookConnectTransmission.RookPhysicalSummaryTransmission], Swift.Error>) -> Swift.Void)
+  final public func uploadPhysicalSummaries(completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+public enum RookContextType {
+  case viewContext
+  case backGroundContext
+  public static func == (a: RookConnectTransmission.RookContextType, b: RookConnectTransmission.RookContextType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers final public class RookTransmissionSettings {
+  public static let shared: RookConnectTransmission.RookTransmissionSettings
+  final public func setConfiguration(_ configuration: RookConnectTransmission.RookTransmissionConfiguration)
+  final public func setUserId(with id: Swift.String?)
+  final public func initRookTransmission()
+  final public func isTransmissionAvailable() -> Swift.Bool
+  @objc deinit
+}
+public struct RookPhysicalSummaryTransmission : Swift.Codable {
+  public let datetime: Swift.String
+  public let sex: Swift.String?
+  public let gender: Swift.String?, dateOfBirth: Swift.String?
+  public let age: Swift.Int?
+  public let country: Swift.String?, state: Swift.String?, city: Swift.String?, ethnicity: Swift.String?
+  public let income: Swift.String?, maritalStatus: Swift.String?, education: Swift.String?
+  public let physicalHealthScore: Swift.Int?, stepsPerDayNumber: Swift.Int?
+  public let stepsGranularDataStepsPerHr: [RookConnectTransmission.StepsGranularDataStepsPerHr]?
+  public let activeStepsPerDayNumber: Swift.Int?
+  public let activeStepsGranularDataStepsPerHr: [RookConnectTransmission.StepsGranularDataStepsPerHr]?
+  public let walkedDistanceMeters: Swift.Int?, traveledDistanceMeters: Swift.Int?
+  public let traveledDistanceGranularDataMeters: [RookConnectTransmission.TraveledDistanceGranularDataMeter]?
+  public let floorsClimbedNumber: Swift.Int?
+  public let floorsClimbedGranularDataFloors: [RookConnectTransmission.FloorsClimbedGranularDataFloor]?
+  public let elevationAvgAltitudeMeters: Swift.Int?, elevationMinimumAltitudeMeters: Swift.Int?, elevationMaxAltitudeMeters: Swift.Int?, elevationLossActualAltitudeMeters: Swift.Int?
+  public let elevationGainActualAltitudeMeters: Swift.Int?, elevationPlannedGainMeters: Swift.Int?
+  public let elevationGranularDataMeters: [RookConnectTransmission.ElevationGranularDataMeter]?
+  public let swimmingStrokesNumber: Swift.Int?, swimmingNumLapsNumber: Swift.Int?, swimmingPoolLengthMeters: Swift.Int?, swimmingTotalDistanceMeters: Swift.Int?
+  public let swimmingDistanceGranularDataMeters: [RookConnectTransmission.SwimmingDistanceGranularDataMeter]?
+  public let saturationAvgPercentage: Swift.Int?
+  public let saturationGranularDataPercentage: [RookConnectTransmission.SaturationGranularDataPercentage]?
+  public let vo2MaxMlPerMinPerKg: Swift.Int?
+  public let vo2GranularDataLiterPerMin: [RookConnectTransmission.Vo2GranularDataLiterPerMin]?
+  public let activeSeconds: Swift.Int?, restSeconds: Swift.Int?, lowIntensitySeconds: Swift.Int?, moderateIntensitySeconds: Swift.Int?
+  public let vigorousIntensitySeconds: Swift.Int?, inactivitySeconds: Swift.Int?
+  public let activityLevelGranularDataNumber: [RookConnectTransmission.ActivityLevelGranularDataNumber]?
+  public let continuousInactivePeriodsNumber: Swift.Int?, caloriesNetIntakeKilocalories: Swift.Int?, caloriesExpenditureKilocalories: Swift.Int?, caloriesNetActiveKilocalories: Swift.Int?
+  public let caloriesBasalMetabolicRateKilocalories: Swift.Int?, hrMaxBPM: Swift.Int?, hrMinimumBPM: Swift.Int?, hrAvgBPM: Swift.Int?
+  public let hrRestingBPM: Swift.Int?
+  public let hrGranularDataBPM: [RookConnectTransmission.HrGranularDataBPM]?
+  public let hrvAvgRmssdNumber: Swift.Int?, hrvAvgSdnnNumber: Swift.Int?
+  public let hrvSdnnGranularDataNumber: [RookConnectTransmission.HrvSdnnGranularDataNumber]?
+  public let hrvRmssdGranularDataNumber: [RookConnectTransmission.HrvRmssdGranularDataNumber]?
+  public let stressAtRESTDurationSeconds: Swift.Int?, stressDurationSeconds: Swift.Int?, lowStressDurationSeconds: Swift.Int?, mediumStressDurationSeconds: Swift.Int?
+  public let highStressDurationSeconds: Swift.Int?
+  public let stressGranularDataScoreNumber: [RookConnectTransmission.StressGranularDataScoreNumber]?
+  public let stressAvgLevelNumber: Swift.Int?, stressMaxLevelNumber: Swift.Int?
+  public let nonStructuredData: RookConnectTransmission.NonStructuredData?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct StepsGranularDataStepsPerHr : Swift.Codable {
+  public let datetime: Swift.String
+  public let intervalDurationSeconds: Swift.Int, steps: Swift.Int
+  public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, steps: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct ActivityLevelGranularDataNumber : Swift.Codable {
+  public let datetime: Swift.String
+  public let activityLevel: Swift.Int
+  public init(datetime: Foundation.Date, activityLevel: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct ElevationGranularDataMeter : Swift.Codable {
+  public let datetime: Swift.String
+  public let intervalDurationSeconds: Swift.Int, elevationChange: Swift.Int
+  public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, elevationChange: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct FloorsClimbedGranularDataFloor : Swift.Codable {
+  public let datetime: Swift.String
+  public let intervalDurationSeconds: Swift.Int, floorsClimbed: Swift.Int
+  public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, floorsClimbed: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct HrGranularDataBPM : Swift.Codable {
+  public let datetime: Swift.String
+  public let hrBPM: Swift.Int
+  public init(datetime: Foundation.Date, hrBPM: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct HrvRmssdGranularDataNumber : Swift.Codable {
+  public let datetime: Swift.String
+  public let hrvRmssd: Swift.Int
+  public init(datetime: Foundation.Date, hrvRmssd: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct HrvSdnnGranularDataNumber : Swift.Codable {
+  public let datetime: Swift.String
+  public let hrvSdnn: Swift.Int
+  public init(datetime: Foundation.Date, hrvSdnn: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NonStructuredData : Swift.Codable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct SaturationGranularDataPercentage : Swift.Codable {
+  public let datetime: Swift.String
+  public let saturationPercentage: Swift.Int
+  public init(datetime: Foundation.Date, saturationPercentage: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct StressGranularDataScoreNumber : Swift.Codable {
+  public let datetime: Swift.String
+  public let stressScore: Swift.Int
+  public init(datetime: Foundation.Date, stressScore: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct SwimmingDistanceGranularDataMeter : Swift.Codable {
+  public let datetime: Swift.String
+  public let intervalDurationSeconds: Swift.Int, swimmingDistanceMeters: Swift.Int
+  public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, swimmingDistanceMeters: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct TraveledDistanceGranularDataMeter : Swift.Codable {
+  public let datetime: Swift.String
+  public let intervalDurationSeconds: Swift.Int, traveledDistanceMeters: Swift.Int
+  public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, traveledDistanceMeters: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Vo2GranularDataLiterPerMin : Swift.Codable {
+  public let datetime: Swift.String
+  public let vo2MlPerMinPerKg: Swift.Int
+  public init(datetime: Foundation.Date, vo2MlPerMinPerKg: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class RookBodyDataTransmissionDTO : Swift.Codable {
+  public var datetime: Foundation.Date
+  public var sex: Swift.String?
+  public var gender: Swift.String?
+  public var dateOfBirth: Swift.String?
+  public var age: Swift.Int?
+  public var country: Swift.String?
+  public var state: Swift.String?
+  public var city: Swift.String?
+  public var ethnicity: Swift.String?
+  public var income: Swift.String?
+  public var maritalStatus: Swift.String?
+  public var education: Swift.String?
+  public var bodyHealthScore: Swift.Int?
+  public var waistCircumferenceCMNumber: Swift.Int?
+  public var hipCircumferenceCMNumber: Swift.Int?
+  public var chestCircumferenceCMNumber: Swift.Int?
+  public var boneCompositionPercentageNumber: Swift.Int?
+  public var muscleCompositionPercentageNumber: Swift.Int?
+  public var weightKgNumber: Swift.Int?
+  public var heightCMNumber: Swift.Int?
+  public var bmiNumber: Swift.Int?
+  public var bloodGlucoseDayAvgMgPerDLNumber: Swift.Int?
+  public var bloodGlucoseGranularDataMgPerDL: [RookConnectTransmission.BloodGlucoseGranularDataMgPerDL]?
+  public var bloodPressureDayAvgSystolicDiastolicBpNumber: [RookConnectTransmission.BloodPressureSystolicDiastolicBpNumber]?
+  public var bloodPressureGranularDataSystolicDiastolicBpNumber: [RookConnectTransmission.BloodPressureGranularDataSystolicDiastolicBpNumber]?
+  public var waterTotalConsumptionMlNumber: Swift.Int?
+  public var hydrationAmountGranularDataMlNumber: [RookConnectTransmission.HydrationAmountGranularDataMlNumber]?
+  public var hydrationLevelGranularDataPercentageNumber: [RookConnectTransmission.HydrationLevelGranularDataPercentageNumber]?
+  public var hrMaxBPM: Swift.Int?
+  public var hrMinimumBPM: Swift.Int?
+  public var hrAvgBPM: Swift.Int?
+  public var hrRestingBPM: Swift.Int?
+  public var hrGranularDataBPM: [RookConnectTransmission.HrGranularDataBPM]?
+  public var hrvAvgRmssdNumber: Swift.Int?
+  public var hrvAvgSdnnNumber: Swift.Int?
+  public var hrvSdnnGranularDataNumber: [RookConnectTransmission.HrvSdnnGranularDataNumber]?
+  public var hrvRmssdGranularDataNumber: [RookConnectTransmission.HrvRmssdGranularDataNumber]?
+  public var moodMinimumScale: Swift.Int?
+  public var moodAvgScale: Swift.Int?
+  public var moodGranularDataScale: [RookConnectTransmission.MoodGranularDataScale]?
+  public var moodMaxScale: Swift.Int?
+  public var moodDeltaScale: Swift.Int?
+  public var foodIntakeNumber: Swift.Int?
+  public var caloriesIntakeNumber: Swift.Int?
+  public var proteinIntakeGNumber: Swift.Int?
+  public var sugarIntakeGNumber: Swift.Int?
+  public var fatIntakeGNumber: Swift.Int?
+  public var transFatIntakeGNumber: Swift.Int?
+  public var carbohydratesIntakeGNumber: Swift.Int?
+  public var fiberIntakeGNumber: Swift.Int?
+  public var alcoholIntakeGNumber: Swift.Int?
+  public var sodiumIntakeMgNumber: Swift.Int?
+  public var cholesterolIntakeMgNumber: Swift.Int?
+  public var saturationAvgPercentage: Swift.Int?
+  public var saturationGranularDataPercentage: [RookConnectTransmission.SaturationGranularDataPercentage]?
+  public var vo2MaxMlPerMinPerKg: Swift.Int?
+  public var vo2GranularDataLiterPerMin: [RookConnectTransmission.Vo2GranularDataLiterPerMin]?
+  public var temperatureMinimumCelsius: Swift.Int?
+  public var temperatureAvgCelsius: Swift.Int?
+  public var temperatureMaxCelsius: Swift.Int?
+  public var temperatureDeltaCelsius: Swift.Int?
+  public var temperatureGranularDataCelsius: [RookConnectTransmission.TemperatureGranularDataCelsius]?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+extension RookConnectTransmission.RookSleepDataTransmissionDTO {
+  public class RookSleepDataTransmissionDTOBuilder {
+    public init()
+    @discardableResult
+    public func addDateTime(date: Foundation.Date) -> RookConnectTransmission.RookSleepDataTransmissionDTO.RookSleepDataTransmissionDTOBuilder
+    @discardableResult
+    public func addMetaData(sex: Swift.String?, gender: Swift.String?, dateOfBirth: Swift.String?, age: Swift.Int?, country: Swift.String?, state: Swift.String?, city: Swift.String?, ethnicity: Swift.String?, income: Swift.String?, maritalStatus: Swift.String?, education: Swift.String?) -> RookConnectTransmission.RookSleepDataTransmissionDTO.RookSleepDataTransmissionDTOBuilder
+    @discardableResult
+    public func addSleepDate(sleepStartDatetime: Foundation.Date, sleepEndDatetime: Foundation.Date, sleepDate: Foundation.Date) -> RookConnectTransmission.RookSleepDataTransmissionDTO.RookSleepDataTransmissionDTOBuilder
+    @discardableResult
+    public func addSleepTime(sleepDurationSeconds: Swift.Int?, timeInBedSeconds: Swift.Int?, lightSleepDurationSeconds: Swift.Int?, remSleepDurationSeconds: Swift.Int?, deepSleepDurationSeconds: Swift.Int?, timeToFallAsleepSeconds: Swift.Int?, timeAwakeDuringSleepSeconds: Swift.Int?) -> RookConnectTransmission.RookSleepDataTransmissionDTO.RookSleepDataTransmissionDTOBuilder
+    @discardableResult
+    public func addSleepScore(sleepHealthScore: Swift.Int?, sleepEfficiency1_100_Score: Swift.Int?, sleepGoalSeconds: Swift.Int?, sleepContinuity1_5_Score: Swift.Int?, sleepContinuity1_5_Rating: Swift.Int?, sleepQualityRating1_5_Score: Swift.Int?) -> RookConnectTransmission.RookSleepDataTransmissionDTO.RookSleepDataTransmissionDTOBuilder
+    @discardableResult
+    public func addHearRateData(hrMaxBPM: Swift.Int?, hrMinimumBPM: Swift.Int?, hrAvgBPM: Swift.Int?, hrRestingBPM: Swift.Int?, hrBasalBPM: Swift.Int?) -> RookConnectTransmission.RookSleepDataTransmissionDTO.RookSleepDataTransmissionDTOBuilder
+    @discardableResult
+    public func addHRVData(hrvAvgRmssdNumber: Swift.Int?, hrvAvgSdnnNumber: Swift.Int?) -> RookConnectTransmission.RookSleepDataTransmissionDTO.RookSleepDataTransmissionDTOBuilder
+    @discardableResult
+    public func addTemperature(temperatureMinimumCelsius: Swift.Int?, temperatureAvgCelsius: Swift.Int?, temperatureMaxCelsius: Swift.Int?, temperatureDeltaCelsius: Swift.Int?) -> RookConnectTransmission.RookSleepDataTransmissionDTO.RookSleepDataTransmissionDTOBuilder
+    @discardableResult
+    public func addBreathing(breathsMinimumPerMin: Swift.Int?, breathsAvgPerMin: Swift.Int?, breathsMaxPerMin: Swift.Int?) -> RookConnectTransmission.RookSleepDataTransmissionDTO.RookSleepDataTransmissionDTOBuilder
+    @discardableResult
+    public func addSnoring(snoringEventsCountNumber: Swift.Int?, snoringDurationTotalSeconds: Swift.Int?) -> RookConnectTransmission.RookSleepDataTransmissionDTO.RookSleepDataTransmissionDTOBuilder
+    @discardableResult
+    public func addGranularHr(data: [RookConnectTransmission.RookHrGranularDataBPMTransmission]?) -> RookConnectTransmission.RookSleepDataTransmissionDTO.RookSleepDataTransmissionDTOBuilder
+    @discardableResult
+    public func addHRVGranular(hrvSdnnGranularData: [RookConnectTransmission.RookHrvSdnnGranularDatumTransmission]?, hrvRmssdGranularData: [RookConnectTransmission.RookHrvRmssdGranularDatumTransmission]?) -> RookConnectTransmission.RookSleepDataTransmissionDTO.RookSleepDataTransmissionDTOBuilder
+    @discardableResult
+    public func addGranularTemperature(temperatureGranularDataCelsius: [RookConnectTransmission.RookTemperatureGranularDataCelsiusTransmission]?) -> RookConnectTransmission.RookSleepDataTransmissionDTO.RookSleepDataTransmissionDTOBuilder
+    @discardableResult
+    public func addGranularBrething(breathingGranularDataBreathsPerMin: [RookConnectTransmission.RookBreathingGranularDataBreathsPerMinTransmission]?) -> RookConnectTransmission.RookSleepDataTransmissionDTO.RookSleepDataTransmissionDTOBuilder
+    @discardableResult
+    public func addGranularSnoring(snoringGranularDataSnores: [RookConnectTransmission.RookSnoringGranularDataSnoreTransmission]?) -> RookConnectTransmission.RookSleepDataTransmissionDTO.RookSleepDataTransmissionDTOBuilder
+    @discardableResult
+    public func addGranularSaturation(saturationGranularDataPercentage: [RookConnectTransmission.RookSaturationGranularDataPercentageTransmission]?) -> RookConnectTransmission.RookSleepDataTransmissionDTO.RookSleepDataTransmissionDTOBuilder
+    public func buildSleepDataTransmission() -> RookConnectTransmission.RookSleepDataTransmissionDTO
+    @objc deinit
+  }
+}
+public typealias HTTPHeaders = [Swift.String : Swift.String]
+public enum HTTPTask {
+  case request
+  case requestParameters(bodyParameters: RookConnectTransmission.Parameters?, urlParameters: RookConnectTransmission.Parameters?)
+  case requestParametersAndHeaders(bodyParameters: RookConnectTransmission.Parameters?, urlParameters: RookConnectTransmission.Parameters?, additionalHeaders: RookConnectTransmission.HTTPHeaders?)
+}
+public struct RookSleepSummaryTransmission : Swift.Codable {
+  public let datetime: Swift.String
+  public let sex: Swift.String?
+  public let gender: Swift.String?, dateOfBirth: Swift.String?
+  public let age: Swift.Int?
+  public let country: Swift.String?, state: Swift.String?, city: Swift.String?, ethnicity: Swift.String?
+  public let income: Swift.String?, maritalStatus: Swift.String?, education: Swift.String?
+  public let sleepHealthScore: Swift.Int?
+  public let sleepStartDatetime: Swift.String?, sleepEndDatetime: Swift.String?, sleepDate: Swift.String?
+  public let sleepDurationSeconds: Swift.Int?, timeInBedSeconds: Swift.Int?, lightSleepDurationSeconds: Swift.Int?, remSleepDurationSeconds: Swift.Int?
+  public let deepSleepDurationSeconds: Swift.Int?, timeToFallAsleepSeconds: Swift.Int?, timeAwakeDuringSleepSeconds: Swift.Int?, sleepQualityRating1_5_Score: Swift.Int?
+  public let sleepEfficiency1_100_Score: Swift.Int?, sleepGoalSeconds: Swift.Int?, sleepContinuity1_5_Score: Swift.Int?, sleepContinuity1_5_Rating: Swift.Int?
+  public let hrMaxBPM: Swift.Int?, hrMinimumBPM: Swift.Int?, hrAvgBPM: Swift.Int?, hrRestingBPM: Swift.Int?
+  public let hrBasalBPM: Swift.Int?
+  public let hrGranularDataBPM: [RookConnectTransmission.RookHrGranularDataBPMTransmission]?
+  public let hrvAvgRmssdNumber: Swift.Int?, hrvAvgSdnnNumber: Swift.Int?
+  public let hrvSdnnGranularData: [RookConnectTransmission.RookHrvSdnnGranularDatumTransmission]?
+  public let hrvRmssdGranularData: [RookConnectTransmission.RookHrvRmssdGranularDatumTransmission]?
+  public let temperatureMinimumCelsius: Swift.Int?, temperatureAvgCelsius: Swift.Int?, temperatureMaxCelsius: Swift.Int?
+  public let temperatureGranularDataCelsius: [RookConnectTransmission.RookTemperatureGranularDataCelsiusTransmission]?
+  public let temperatureDeltaCelsius: Swift.Int?, breathsMinimumPerMin: Swift.Int?, breathsAvgPerMin: Swift.Int?, breathsMaxPerMin: Swift.Int?
+  public let breathingGranularDataBreathsPerMin: [RookConnectTransmission.RookBreathingGranularDataBreathsPerMinTransmission]?
+  public let snoringEventsCountNumber: Swift.Int?, snoringDurationTotalSeconds: Swift.Int?
+  public let snoringGranularDataSnores: [RookConnectTransmission.RookSnoringGranularDataSnoreTransmission]?
+  public let saturationAvgPercentage: Swift.Int?
+  public let saturationGranularDataPercentage: [RookConnectTransmission.RookSaturationGranularDataPercentageTransmission]?
+  public let saturationMinPercentage: Swift.Int?, saturationMaxPercentage: Swift.Int?
+  public let nonStructuredData: RookConnectTransmission.RookNonStructuredData?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct RookBreathingGranularDataBreathsPerMinTransmission : Swift.Codable {
+  public init(datetime: Foundation.Date, breathsPerMin: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct RookHrGranularDataBPMTransmission : Swift.Codable {
+  public init(datetime: Foundation.Date, bpm: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct RookHrvRmssdGranularDatumTransmission : Swift.Codable {
+  public init(datetime: Foundation.Date, hrvRmssd: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct RookHrvSdnnGranularDatumTransmission : Swift.Codable {
+  public init(datetime: Foundation.Date, hrvSdnn: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct RookNonStructuredData : Swift.Codable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct RookSaturationGranularDataPercentageTransmission : Swift.Codable {
+  public init(datetime: Foundation.Date, saturationPercentage: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct RookSnoringGranularDataSnoreTransmission : Swift.Codable {
+  public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, snoringEventsCountNumber: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct RookTemperatureGranularDataCelsiusTransmission : Swift.Codable {
+  public init(datetime: Foundation.Date, temperatureCelsius: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc(RookPhysicalDataExt) public class RookPhysicalDataExt : CoreData.NSManagedObject {
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class RookPhysicalDataTransmissionDTO : Swift.Codable {
+  public var datetime: Foundation.Date
+  public var sex: Swift.String?
+  public var gender: Swift.String?
+  public var dateOfBirth: Swift.String?
+  public var age: Swift.Int?
+  public var country: Swift.String?
+  public var state: Swift.String?
+  public var city: Swift.String?
+  public var ethnicity: Swift.String?
+  public var income: Swift.String?
+  public var maritalStatus: Swift.String?
+  public var education: Swift.String?
+  public var physicalHealthScore: Swift.Int?
+  public var stepsPerDayNumber: Swift.Int?
+  public var stepsGranularDataStepsPerHr: [RookConnectTransmission.StepsGranularDataStepsPerHr]?
+  public var activeStepsPerDayNumber: Swift.Int?
+  public var activeStepsGranularDataStepsPerHr: [RookConnectTransmission.StepsGranularDataStepsPerHr]?
+  public var walkedDistanceMeters: Swift.Int?
+  public var traveledDistanceMeters: Swift.Int?
+  public var traveledDistanceGranularDataMeters: [RookConnectTransmission.TraveledDistanceGranularDataMeter]?
+  public var floorsClimbedNumber: Swift.Int?
+  public var floorsClimbedGranularDataFloors: [RookConnectTransmission.FloorsClimbedGranularDataFloor]?
+  public var elevationAvgAltitudeMeters: Swift.Int?
+  public var elevationMinimumAltitudeMeters: Swift.Int?
+  public var elevationMaxAltitudeMeters: Swift.Int?
+  public var elevationLossActualAltitudeMeters: Swift.Int?
+  public var elevationGainActualAltitudeMeters: Swift.Int?
+  public var elevationPlannedGainMeters: Swift.Int?
+  public var elevationGranularDataMeters: [RookConnectTransmission.ElevationGranularDataMeter]?
+  public var swimmingStrokesNumber: Swift.Int?
+  public var swimmingNumLapsNumber: Swift.Int?
+  public var swimmingPoolLengthMeters: Swift.Int?
+  public var swimmingTotalDistanceMeters: Swift.Int?
+  public var swimmingDistanceGranularDataMeters: [RookConnectTransmission.SwimmingDistanceGranularDataMeter]?
+  public var saturationAvgPercentage: Swift.Int?
+  public var saturationGranularDataPercentage: [RookConnectTransmission.SaturationGranularDataPercentage]?
+  public var vo2MaxMlPerMinPerKg: Swift.Int?
+  public var vo2GranularDataLiterPerMin: [RookConnectTransmission.Vo2GranularDataLiterPerMin]?
+  public var activeSeconds: Swift.Int?
+  public var restSeconds: Swift.Int?
+  public var lowIntensitySeconds: Swift.Int?
+  public var moderateIntensitySeconds: Swift.Int?
+  public var vigorousIntensitySeconds: Swift.Int?
+  public var inactivitySeconds: Swift.Int?
+  public var activityLevelGranularDataNumber: [RookConnectTransmission.ActivityLevelGranularDataNumber]?
+  public var continuousInactivePeriodsNumber: Swift.Int?
+  public var caloriesNetIntakeKilocalories: Swift.Int?
+  public var caloriesExpenditureKilocalories: Swift.Int?
+  public var caloriesNetActiveKilocalories: Swift.Int?
+  public var caloriesBasalMetabolicRateKilocalories: Swift.Int?
+  public var hrMaxBPM: Swift.Int?
+  public var hrMinimumBPM: Swift.Int?
+  public var hrAvgBPM: Swift.Int?
+  public var hrRestingBPM: Swift.Int?
+  public var hrGranularDataBPM: [RookConnectTransmission.HrGranularDataBPM]?
+  public var hrvAvgRmssdNumber: Swift.Int?
+  public var hrvAvgSdnnNumber: Swift.Int?
+  public var hrvSdnnGranularDataNumber: [RookConnectTransmission.HrvSdnnGranularDataNumber]?
+  public var hrvRmssdGranularDataNumber: [RookConnectTransmission.HrvRmssdGranularDataNumber]?
+  public var stressAtRESTDurationSeconds: Swift.Int?
+  public var stressDurationSeconds: Swift.Int?
+  public var lowStressDurationSeconds: Swift.Int?
+  public var mediumStressDurationSeconds: Swift.Int?
+  public var highStressDurationSeconds: Swift.Int?
+  public var stressGranularDataScoreNumber: [RookConnectTransmission.StressGranularDataScoreNumber]?
+  public var stressAvgLevelNumber: Swift.Int?
+  public var stressMaxLevelNumber: Swift.Int?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+public typealias NetworkRouterCompletion = (_ data: Foundation.Data?, _ response: Foundation.URLResponse?, _ error: Swift.Error?) -> Swift.Void
+public enum NetworkResponse : Swift.String {
+  case succes
+  case authenticationError
+  case badRequest
+  case outdated
+  case failed
+  case noData
+  case unableToDecode
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public typealias Parameters = [Swift.String : Any]
+public protocol ParameterEncoder {
+  static func encode(urlRequest: inout Foundation.URLRequest, with parameters: RookConnectTransmission.Parameters) throws
+}
+public enum NetworkError : Swift.String, Swift.Error {
+  case parametersNil
+  case encodingFailed
+  case missingUrl
+  case noData
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct RookBodySummaryTransmission : Swift.Codable {
+  public let datetime: Swift.String
+  public let sex: Swift.String?
+  public let gender: Swift.String?, dateOfBirth: Swift.String?
+  public let age: Swift.Int?
+  public let country: Swift.String?, state: Swift.String?, city: Swift.String?, ethnicity: Swift.String?
+  public let income: Swift.String?, maritalStatus: Swift.String?, education: Swift.String?
+  public let bodyHealthScore: Swift.Int?, waistCircumferenceCMNumber: Swift.Int?, hipCircumferenceCMNumber: Swift.Int?, chestCircumferenceCMNumber: Swift.Int?
+  public let boneCompositionPercentageNumber: Swift.Int?, muscleCompositionPercentageNumber: Swift.Int?, weightKgNumber: Swift.Int?, heightCMNumber: Swift.Int?
+  public let bmiNumber: Swift.Int?, bloodGlucoseDayAvgMgPerDLNumber: Swift.Int?
+  public let bloodGlucoseGranularDataMgPerDL: [RookConnectTransmission.BloodGlucoseGranularDataMgPerDL]?
+  public let bloodPressureDayAvgSystolicDiastolicBpNumber: [RookConnectTransmission.BloodPressureSystolicDiastolicBpNumber]?
+  public let bloodPressureGranularDataSystolicDiastolicBpNumber: [RookConnectTransmission.BloodPressureGranularDataSystolicDiastolicBpNumber]?
+  public let waterTotalConsumptionMlNumber: Swift.Int?
+  public let hydrationAmountGranularDataMlNumber: [RookConnectTransmission.HydrationAmountGranularDataMlNumber]?
+  public let hydrationLevelGranularDataPercentageNumber: [RookConnectTransmission.HydrationLevelGranularDataPercentageNumber]?
+  public let hrMaxBPM: Swift.Int?, hrMinimumBPM: Swift.Int?, hrAvgBPM: Swift.Int?, hrRestingBPM: Swift.Int?
+  public let hrGranularDataBPM: [RookConnectTransmission.HrGranularDataBPM]?
+  public let hrvAvgRmssdNumber: Swift.Int?, hrvAvgSdnnNumber: Swift.Int?
+  public let hrvSdnnGranularDataNumber: [RookConnectTransmission.HrvSdnnGranularDataNumber]?
+  public let hrvRmssdGranularDataNumber: [RookConnectTransmission.HrvRmssdGranularDataNumber]?
+  public let moodMinimumScale: Swift.Int?, moodAvgScale: Swift.Int?
+  public let moodGranularDataScale: [RookConnectTransmission.MoodGranularDataScale]?
+  public let moodMaxScale: Swift.Int?, moodDeltaScale: Swift.Int?, foodIntakeNumber: Swift.Int?, caloriesIntakeNumber: Swift.Int?
+  public let proteinIntakeGNumber: Swift.Int?, sugarIntakeGNumber: Swift.Int?, fatIntakeGNumber: Swift.Int?, transFatIntakeGNumber: Swift.Int?
+  public let carbohydratesIntakeGNumber: Swift.Int?, fiberIntakeGNumber: Swift.Int?, alcoholIntakeGNumber: Swift.Int?, sodiumIntakeMgNumber: Swift.Int?
+  public let cholesterolIntakeMgNumber: Swift.Int?, saturationAvgPercentage: Swift.Int?
+  public let saturationGranularDataPercentage: [RookConnectTransmission.SaturationGranularDataPercentage]?
+  public let vo2MaxMlPerMinPerKg: Swift.Int?
+  public let vo2GranularDataLiterPerMin: [RookConnectTransmission.Vo2GranularDataLiterPerMin]?
+  public let temperatureMinimumCelsius: Swift.Int?, temperatureAvgCelsius: Swift.Int?, temperatureMaxCelsius: Swift.Int?, temperatureDeltaCelsius: Swift.Int?
+  public let temperatureGranularDataCelsius: [RookConnectTransmission.TemperatureGranularDataCelsius]?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct BloodGlucoseGranularDataMgPerDL : Swift.Codable {
+  public let datetime: Swift.String
+  public let bloodGlucoseMgPerDL: Swift.Int
+  public init(datetime: Foundation.Date, bloodGlucoseMgPerDL: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct BloodPressureSystolicDiastolicBpNumber : Swift.Codable {
+  public let systolicBp: Swift.Int, diastolicBp: Swift.Int
+  public init(systolicBp: Swift.Int, diastolicBp: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct BloodPressureGranularDataSystolicDiastolicBpNumber : Swift.Codable {
+  public let datetime: Swift.String
+  public let bloodPressureSystolicDiastolicBpNumber: [RookConnectTransmission.BloodPressureSystolicDiastolicBpNumber]
+  public init(datetime: Foundation.Date, bloodPressureSystolicDiastolicBpNumber: [RookConnectTransmission.BloodPressureSystolicDiastolicBpNumber])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct HydrationAmountGranularDataMlNumber : Swift.Codable {
+  public let datetime: Swift.String
+  public let intervalDurationSeconds: Swift.Int, hydrationAmountMl: Swift.Int
+  public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, hydrationAmountMl: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct HydrationLevelGranularDataPercentageNumber : Swift.Codable {
+  public let datetime: Swift.String
+  public let intervalDurationSeconds: Swift.Int, hydrationLevelPercentage: Swift.Int
+  public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, hydrationLevelPercentage: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct MoodGranularDataScale : Swift.Codable {
+  public let datetime: Swift.String
+  public let intervalDurationSeconds: Swift.Int, moodScale: Swift.Int
+  public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, moodScale: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct TemperatureGranularDataCelsius : Swift.Codable {
+  public let datetime: Swift.String
+  public let temperatureCelsius: Swift.Int
+  public init(datetime: Foundation.Date, temperatureCelsius: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension RookConnectTransmission.RookPhysicalDataTransmissionDTO {
+  public class RookPhysicalDataTransmissionDTOBuilder {
+    public init()
+    @discardableResult
+    public func addDateTime(date: Foundation.Date) -> RookConnectTransmission.RookPhysicalDataTransmissionDTO.RookPhysicalDataTransmissionDTOBuilder
+    @discardableResult
+    public func addMetaData(sex: Swift.String?, gender: Swift.String?, dateOfBirth: Swift.String?, age: Swift.Int?, country: Swift.String?, state: Swift.String?, city: Swift.String?, ethnicity: Swift.String?, income: Swift.String?, maritalStatus: Swift.String?, education: Swift.String?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTO.RookPhysicalDataTransmissionDTOBuilder
+    @discardableResult
+    public func addDistanceData(physicalHealthScore: Swift.Int?, stepsPerDayNumber: Swift.Int?, stepsGranularDataStepsPerHr: [RookConnectTransmission.StepsGranularDataStepsPerHr]?, activeStepsPerDayNumber: Swift.Int?, activeStepsGranularDataStepsPerHr: [RookConnectTransmission.StepsGranularDataStepsPerHr]?, walkedDistanceMeters: Swift.Int?, traveledDistanceMeters: Swift.Int?, traveledDistanceGranularDataMeters: [RookConnectTransmission.TraveledDistanceGranularDataMeter]?, floorsClimbedNumber: Swift.Int?, floorsClimbedGranularDataFloors: [RookConnectTransmission.FloorsClimbedGranularDataFloor]?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTO.RookPhysicalDataTransmissionDTOBuilder
+    @discardableResult
+    public func addElevationData(elevationAvgAltitudeMeters: Swift.Int?, elevationMinimumAltitudeMeters: Swift.Int?, elevationMaxAltitudeMeters: Swift.Int?, elevationLossActualAltitudeMeters: Swift.Int?, elevationGainActualAltitudeMeters: Swift.Int?, elevationPlannedGainMeters: Swift.Int?, elevationGranularDataMeters: [RookConnectTransmission.ElevationGranularDataMeter]?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTO.RookPhysicalDataTransmissionDTOBuilder
+    @discardableResult
+    public func addSwimmingData(swimmingStrokesNumber: Swift.Int?, swimmingNumLapsNumber: Swift.Int?, swimmingPoolLengthMeters: Swift.Int?, swimmingTotalDistanceMeters: Swift.Int?, swimmingDistanceGranularDataMeters: [RookConnectTransmission.SwimmingDistanceGranularDataMeter]?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTO.RookPhysicalDataTransmissionDTOBuilder
+    @discardableResult
+    public func addSaturationData(saturationAvgPercentage: Swift.Int?, saturationGranularDataPercentage: [RookConnectTransmission.SaturationGranularDataPercentage]?, vo2MaxMlPerMinPerKg: Swift.Int?, vo2GranularDataLiterPerMin: [RookConnectTransmission.Vo2GranularDataLiterPerMin]?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTO.RookPhysicalDataTransmissionDTOBuilder
+    @discardableResult
+    public func addActiveData(activeSeconds: Swift.Int?, restSeconds: Swift.Int?, lowIntensitySeconds: Swift.Int?, moderateIntensitySeconds: Swift.Int?, vigorousIntensitySeconds: Swift.Int?, inactivitySeconds: Swift.Int?, activityLevelGranularDataNumber: [RookConnectTransmission.ActivityLevelGranularDataNumber]?, continuousInactivePeriodsNumber: Swift.Int?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTO.RookPhysicalDataTransmissionDTOBuilder
+    @discardableResult
+    public func addCaloriesData(caloriesNetIntakeKilocalories: Swift.Int?, caloriesExpenditureKilocalories: Swift.Int?, caloriesNetActiveKilocalories: Swift.Int?, caloriesBasalMetabolicRateKilocalories: Swift.Int?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTO.RookPhysicalDataTransmissionDTOBuilder
+    @discardableResult
+    public func addHeartRateData(hrMaxBPM: Swift.Int?, hrMinimumBPM: Swift.Int?, hrAvgBPM: Swift.Int?, hrRestingBPM: Swift.Int?, hrGranularDataBPM: [RookConnectTransmission.HrGranularDataBPM]?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTO.RookPhysicalDataTransmissionDTOBuilder
+    @discardableResult
+    public func addHRVData(hrvAvgRmssdNumber: Swift.Int?, hrvAvgSdnnNumber: Swift.Int?, hrvSdnnGranularDataNumber: [RookConnectTransmission.HrvSdnnGranularDataNumber]?, hrvRmssdGranularDataNumber: [RookConnectTransmission.HrvRmssdGranularDataNumber]?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTO.RookPhysicalDataTransmissionDTOBuilder
+    @discardableResult
+    public func addStressData(stressAtRESTDurationSeconds: Swift.Int?, stressDurationSeconds: Swift.Int?, lowStressDurationSeconds: Swift.Int?, mediumStressDurationSeconds: Swift.Int?, highStressDurationSeconds: Swift.Int?, stressGranularDataScoreNumber: [RookConnectTransmission.StressGranularDataScoreNumber]?, stressAvgLevelNumber: Swift.Int?, stressMaxLevelNumber: Swift.Int?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTO.RookPhysicalDataTransmissionDTOBuilder
+    public func buildPhysicalDataTransmission() -> RookConnectTransmission.RookPhysicalDataTransmissionDTO
+    @objc deinit
+  }
+}
+public enum RookTransmissionError : Swift.String, Swift.Error {
+  case emptyUserId
+  case rookTransmissionIsNotAvailable
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+final public class RookBodyTransmissionManager {
+  public init()
+  final public func enqueueBodySummary(with extractionData: Foundation.Data, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
+  final public func enqueueBodySummary(with bodyDTO: RookConnectTransmission.RookBodyDataTransmissionDTO, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
+  final public func getBodySummariesStored(completion: @escaping (Swift.Result<[RookConnectTransmission.RookBodySummaryTransmission], Swift.Error>) -> Swift.Void)
+  final public func uploadBodySummaries(completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+public struct FoodIntakeNumberExtraction : Swift.Codable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct URLParameterEncoder : RookConnectTransmission.ParameterEncoder {
+  public static func encode(urlRequest: inout Foundation.URLRequest, with parameters: RookConnectTransmission.Parameters) throws
+}
+@_hasMissingDesignatedInitializers public class RookSleepDataTransmissionDTO : Swift.Codable {
+  public var datetime: Swift.String
+  public var sex: Swift.String?
+  public var gender: Swift.String?
+  public var dateOfBirth: Swift.String?
+  public var age: Swift.Int?
+  public var country: Swift.String?
+  public var state: Swift.String?
+  public var city: Swift.String?
+  public var ethnicity: Swift.String?
+  public var income: Swift.String?
+  public var maritalStatus: Swift.String?
+  public var education: Swift.String?
+  public var sleepStartDatetime: Swift.String?
+  public var sleepEndDatetime: Swift.String?
+  public var sleepDate: Swift.String?
+  public var sleepDurationSeconds: Swift.Int?
+  public var timeInBedSeconds: Swift.Int?
+  public var lightSleepDurationSeconds: Swift.Int?
+  public var remSleepDurationSeconds: Swift.Int?
+  public var deepSleepDurationSeconds: Swift.Int?
+  public var timeToFallAsleepSeconds: Swift.Int?
+  public var timeAwakeDuringSleepSeconds: Swift.Int?
+  public var sleepHealthScore: Swift.Int?
+  public var sleepEfficiency1_100_Score: Swift.Int?
+  public var sleepGoalSeconds: Swift.Int?
+  public var sleepContinuity1_5_Score: Swift.Int?
+  public var sleepContinuity1_5_Rating: Swift.Int?
+  public var sleepQualityRating1_5_Score: Swift.Int?
+  public var hrMaxBPM: Swift.Int?
+  public var hrMinimumBPM: Swift.Int?
+  public var hrAvgBPM: Swift.Int?
+  public var hrRestingBPM: Swift.Int?
+  public var hrBasalBPM: Swift.Int?
+  public var hrGranularDataBPM: [RookConnectTransmission.RookHrGranularDataBPMTransmission]?
+  public var hrvAvgRmssdNumber: Swift.Int?
+  public var hrvAvgSdnnNumber: Swift.Int?
+  public var hrvSdnnGranularData: [RookConnectTransmission.RookHrvSdnnGranularDatumTransmission]?
+  public var hrvRmssdGranularData: [RookConnectTransmission.RookHrvRmssdGranularDatumTransmission]?
+  public var temperatureMinimumCelsius: Swift.Int?
+  public var temperatureAvgCelsius: Swift.Int?
+  public var temperatureMaxCelsius: Swift.Int?
+  public var temperatureDeltaCelsius: Swift.Int?
+  public var temperatureGranularDataCelsius: [RookConnectTransmission.RookTemperatureGranularDataCelsiusTransmission]?
+  public var breathsMinimumPerMin: Swift.Int?
+  public var breathsAvgPerMin: Swift.Int?
+  public var breathsMaxPerMin: Swift.Int?
+  public var breathingGranularDataBreathsPerMin: [RookConnectTransmission.RookBreathingGranularDataBreathsPerMinTransmission]?
+  public var snoringEventsCountNumber: Swift.Int?
+  public var snoringDurationTotalSeconds: Swift.Int?
+  public var snoringGranularDataSnores: [RookConnectTransmission.RookSnoringGranularDataSnoreTransmission]?
+  public var saturationAvgPercentage: Swift.Int?
+  public var saturationMinPercentage: Swift.Int?
+  public var saturationMaxPercentage: Swift.Int?
+  public var saturationGranularDataPercentage: [RookConnectTransmission.RookSaturationGranularDataPercentageTransmission]?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+public struct FloorsClimbedGranularDataFloorExtraction : Swift.Codable {
+  public let datetime: Foundation.Date
+  public let intervalDurationSeconds: Swift.Int, floorsClimbed: Swift.Int
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct RookTransmissionConfiguration {
+  public let urlAPI: Swift.String
+  public let clientUUID: Swift.String
+  public let secretKey: Swift.String
+  public init(urlAPI: Swift.String, clientUUID: Swift.String, secretKey: Swift.String)
+}
+extension RookConnectTransmission.HTTPMethod : Swift.Equatable {}
+extension RookConnectTransmission.HTTPMethod : Swift.Hashable {}
+extension RookConnectTransmission.HTTPMethod : Swift.RawRepresentable {}
+extension RookConnectTransmission.RookContextType : Swift.Equatable {}
+extension RookConnectTransmission.RookContextType : Swift.Hashable {}
+extension RookConnectTransmission.NetworkResponse : Swift.Equatable {}
+extension RookConnectTransmission.NetworkResponse : Swift.Hashable {}
+extension RookConnectTransmission.NetworkResponse : Swift.RawRepresentable {}
+extension RookConnectTransmission.NetworkError : Swift.Equatable {}
+extension RookConnectTransmission.NetworkError : Swift.Hashable {}
+extension RookConnectTransmission.NetworkError : Swift.RawRepresentable {}
+extension RookConnectTransmission.RookTransmissionError : Swift.Equatable {}
+extension RookConnectTransmission.RookTransmissionError : Swift.Hashable {}
+extension RookConnectTransmission.RookTransmissionError : Swift.RawRepresentable {}
