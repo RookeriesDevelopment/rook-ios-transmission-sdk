@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)
-// swift-module-flags: -target x86_64-apple-ios16.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RookConnectTransmission
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name RookConnectTransmission
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import CoreData
 import Foundation
@@ -46,8 +46,8 @@ extension RookConnectTransmission.RookBodyDataTransmissionDTO {
     @objc deinit
   }
 }
-final public class RookSleepTransmissionManager {
-  public init()
+@_inheritsConvenienceInitializers @objc final public class RookSleepTransmissionManager : ObjectiveC.NSObject {
+  @objc override dynamic public init()
   final public func enqueueSleepSummary(with extractionData: Foundation.Data, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
   final public func enqueueSleepSummary(with summary: RookConnectTransmission.RookSleepDataTransmissionDTO, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
   final public func getSleepSummariesStored(completion: @escaping (Swift.Result<[RookConnectTransmission.RookSleepSummaryTransmission], Swift.Error>) -> Swift.Void)
@@ -112,8 +112,40 @@ public enum HTTPMethod : Swift.String {
   @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
   @objc deinit
 }
-final public class RookPhysicalTransmissionManager {
-  public init()
+extension RookConnectTransmission.RookSleepTransmissionManager {
+  @objc final public func enqueueSleepSummaryObjc(with summaryBuilder: RookConnectTransmission.RookSleepDataTransmissionDTOBuilderObjc, completion: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
+  @objc final public func getSleepSummariesStoredObjc(completion: @escaping ([[Swift.String : Any]]?, Swift.Error?) -> Swift.Void)
+  @objc final public func uploadSleepSummariesObjc(completion: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
+}
+@_inheritsConvenienceInitializers @objc public class RookPhysicalDataTransmissionDTOBuilderObjc : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @discardableResult
+  @objc public func addDateTime(date: Foundation.Date) -> RookConnectTransmission.RookPhysicalDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addMetaData(sex: Swift.String?, gender: Swift.String?, dateOfBirth: Swift.String?, age: Foundation.NSNumber?, country: Swift.String?, state: Swift.String?, city: Swift.String?, ethnicity: Swift.String?, income: Swift.String?, maritalStatus: Swift.String?, education: Swift.String?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addDistanceData(physicalHealthScore: Foundation.NSNumber?, stepsPerDayNumber: Foundation.NSNumber?, stepsGranularDataStepsPerHr: [RookConnectTransmission.StepsGranularDataStepsPerHrObjc]?, activeStepsPerDayNumber: Foundation.NSNumber?, activeStepsGranularDataStepsPerHr: [RookConnectTransmission.StepsGranularDataStepsPerHrObjc]?, walkedDistanceMeters: Foundation.NSNumber?, traveledDistanceMeters: Foundation.NSNumber?, traveledDistanceGranularDataMeters: [RookConnectTransmission.TraveledDistanceGranularDataMeterObjc]?, floorsClimbedNumber: Foundation.NSNumber?, floorsClimbedGranularDataFloors: [RookConnectTransmission.FloorsClimbedGranularDataFloorObjc]?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addElevationData(elevationAvgAltitudeMeters: Foundation.NSNumber?, elevationMinimumAltitudeMeters: Foundation.NSNumber?, elevationMaxAltitudeMeters: Foundation.NSNumber?, elevationLossActualAltitudeMeters: Foundation.NSNumber?, elevationGainActualAltitudeMeters: Foundation.NSNumber?, elevationPlannedGainMeters: Foundation.NSNumber?, elevationGranularDataMeters: [RookConnectTransmission.ElevationGranularDataMeterObjc]?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addSwimmingData(swimmingStrokesNumber: Foundation.NSNumber?, swimmingNumLapsNumber: Foundation.NSNumber?, swimmingPoolLengthMeters: Foundation.NSNumber?, swimmingTotalDistanceMeters: Foundation.NSNumber?, swimmingDistanceGranularDataMeters: [RookConnectTransmission.SwimmingDistanceGranularDataMeterObjc]?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addSaturationData(saturationAvgPercentage: Foundation.NSNumber?, saturationGranularDataPercentage: [RookConnectTransmission.SaturationGranularDataPercentageObjc]?, vo2MaxMlPerMinPerKg: Foundation.NSNumber?, vo2GranularDataLiterPerMin: [RookConnectTransmission.Vo2GranularDataLiterPerMinObjc]?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addActiveData(activeSeconds: Foundation.NSNumber?, restSeconds: Foundation.NSNumber?, lowIntensitySeconds: Foundation.NSNumber?, moderateIntensitySeconds: Foundation.NSNumber?, vigorousIntensitySeconds: Foundation.NSNumber?, inactivitySeconds: Foundation.NSNumber?, activityLevelGranularDataNumber: [RookConnectTransmission.ActivityLevelGranularDataNumberObjc]?, continuousInactivePeriodsNumber: Foundation.NSNumber?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addCaloriesData(caloriesNetIntakeKilocalories: Foundation.NSNumber?, caloriesExpenditureKilocalories: Foundation.NSNumber?, caloriesNetActiveKilocalories: Foundation.NSNumber?, caloriesBasalMetabolicRateKilocalories: Foundation.NSNumber?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addHeartRateData(hrMaxBPM: Swift.Int, hrMinimumBPM: Swift.Int, hrAvgBPM: Swift.Int, hrRestingBPM: Swift.Int, hrGranularDataBPM: [RookConnectTransmission.HrGranularDataBPMObjc]?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addHRVData(hrvAvgRmssdNumber: Swift.Int, hrvAvgSdnnNumber: Swift.Int, hrvSdnnGranularDataNumber: [RookConnectTransmission.HrvSdnnGranularDataNumberObjc]?, hrvRmssdGranularDataNumber: [RookConnectTransmission.HrvRmssdGranularDataNumberObjc]?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTOBuilderObjc
+  @discardableResult
+  public func addStressData(stressAtRESTDurationSeconds: Foundation.NSNumber?, stressDurationSeconds: Foundation.NSNumber?, lowStressDurationSeconds: Foundation.NSNumber?, mediumStressDurationSeconds: Foundation.NSNumber?, highStressDurationSeconds: Foundation.NSNumber?, stressGranularDataScoreNumber: [RookConnectTransmission.StressGranularDataScoreNumberObjc]?, stressAvgLevelNumber: Foundation.NSNumber?, stressMaxLevelNumber: Foundation.NSNumber?) -> RookConnectTransmission.RookPhysicalDataTransmissionDTOBuilderObjc
+  public func buildPhysicalDataTransmission() -> RookConnectTransmission.RookPhysicalDataTransmissionDTO
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc final public class RookPhysicalTransmissionManager : ObjectiveC.NSObject {
+  @objc override dynamic public init()
   final public func enqueuePhysicalSummary(with extractionData: Foundation.Data, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
   final public func enqueuePhysicalSummary(with physicalDTO: RookConnectTransmission.RookPhysicalDataTransmissionDTO, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
   final public func getPhysicalSummariesStored(completion: @escaping (Swift.Result<[RookConnectTransmission.RookPhysicalSummaryTransmission], Swift.Error>) -> Swift.Void)
@@ -129,12 +161,12 @@ public enum RookContextType {
     get
   }
 }
-@_hasMissingDesignatedInitializers final public class RookTransmissionSettings {
-  public static let shared: RookConnectTransmission.RookTransmissionSettings
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc final public class RookTransmissionSettings : ObjectiveC.NSObject {
+  @objc public static let shared: RookConnectTransmission.RookTransmissionSettings
   final public func setConfiguration(_ configuration: RookConnectTransmission.RookTransmissionConfiguration)
-  final public func setUserId(with id: Swift.String?)
-  final public func initRookTransmission()
-  final public func isTransmissionAvailable() -> Swift.Bool
+  @objc final public func setUserId(with id: Swift.String?)
+  @objc final public func initRookTransmission()
+  @objc final public func isTransmissionAvailable() -> Swift.Bool
   @objc deinit
 }
 public struct RookPhysicalSummaryTransmission : Swift.Codable {
@@ -186,12 +218,28 @@ public struct StepsGranularDataStepsPerHr : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+@objc public class StepsGranularDataStepsPerHrObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let datetime: Foundation.Date
+  final public let intervalDurationSeconds: Swift.Int, steps: Swift.Int
+  @objc public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, steps: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public struct ActivityLevelGranularDataNumber : Swift.Codable {
   public let datetime: Swift.String
   public let activityLevel: Swift.Int
   public init(datetime: Foundation.Date, activityLevel: Swift.Int)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+}
+@objc public class ActivityLevelGranularDataNumberObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let datetime: Foundation.Date
+  final public let activityLevel: Swift.Int
+  @objc public init(datetime: Foundation.Date, activityLevel: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 public struct ElevationGranularDataMeter : Swift.Codable {
   public let datetime: Swift.String
@@ -200,12 +248,28 @@ public struct ElevationGranularDataMeter : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+@objc public class ElevationGranularDataMeterObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let datetime: Foundation.Date
+  final public let intervalDurationSeconds: Swift.Int, elevationChange: Swift.Int
+  @objc public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, elevationChange: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public struct FloorsClimbedGranularDataFloor : Swift.Codable {
   public let datetime: Swift.String
   public let intervalDurationSeconds: Swift.Int, floorsClimbed: Swift.Int
   public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, floorsClimbed: Swift.Int)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+}
+@objc public class FloorsClimbedGranularDataFloorObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let datetime: Foundation.Date
+  final public let intervalDurationSeconds: Swift.Int, floorsClimbed: Swift.Int
+  @objc public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, floorsClimbed: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 public struct HrGranularDataBPM : Swift.Codable {
   public let datetime: Swift.String
@@ -214,6 +278,14 @@ public struct HrGranularDataBPM : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+@objc public class HrGranularDataBPMObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let datetime: Foundation.Date
+  final public let hrBPM: Swift.Int
+  @objc public init(datetime: Foundation.Date, hrBPM: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public struct HrvRmssdGranularDataNumber : Swift.Codable {
   public let datetime: Swift.String
   public let hrvRmssd: Swift.Int
@@ -221,12 +293,28 @@ public struct HrvRmssdGranularDataNumber : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+@objc public class HrvRmssdGranularDataNumberObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let datetime: Foundation.Date
+  final public let hrvRmssd: Swift.Int
+  @objc public init(datetime: Foundation.Date, hrvRmssd: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public struct HrvSdnnGranularDataNumber : Swift.Codable {
   public let datetime: Swift.String
   public let hrvSdnn: Swift.Int
   public init(datetime: Foundation.Date, hrvSdnn: Swift.Int)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+}
+@objc public class HrvSdnnGranularDataNumberObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let datetime: Foundation.Date
+  final public let hrvSdnn: Swift.Int
+  @objc public init(datetime: Foundation.Date, hrvSdnn: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 public struct NonStructuredData : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
@@ -239,12 +327,28 @@ public struct SaturationGranularDataPercentage : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+@objc public class SaturationGranularDataPercentageObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let datetime: Foundation.Date
+  final public let saturationPercentage: Swift.Int
+  @objc public init(datetime: Foundation.Date, saturationPercentage: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public struct StressGranularDataScoreNumber : Swift.Codable {
   public let datetime: Swift.String
   public let stressScore: Swift.Int
   public init(datetime: Foundation.Date, stressScore: Swift.Int)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+}
+@objc public class StressGranularDataScoreNumberObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let datetime: Foundation.Date
+  final public let stressScore: Swift.Int
+  @objc public init(datetime: Foundation.Date, stressScore: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 public struct SwimmingDistanceGranularDataMeter : Swift.Codable {
   public let datetime: Swift.String
@@ -253,6 +357,14 @@ public struct SwimmingDistanceGranularDataMeter : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+@objc public class SwimmingDistanceGranularDataMeterObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let datetime: Foundation.Date
+  final public let intervalDurationSeconds: Swift.Int, swimmingDistanceMeters: Swift.Int
+  @objc public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, swimmingDistanceMeters: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public struct TraveledDistanceGranularDataMeter : Swift.Codable {
   public let datetime: Swift.String
   public let intervalDurationSeconds: Swift.Int, traveledDistanceMeters: Swift.Int
@@ -260,12 +372,28 @@ public struct TraveledDistanceGranularDataMeter : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+@objc public class TraveledDistanceGranularDataMeterObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let datetime: Foundation.Date
+  final public let intervalDurationSeconds: Swift.Int, traveledDistanceMeters: Swift.Int
+  @objc public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, traveledDistanceMeters: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public struct Vo2GranularDataLiterPerMin : Swift.Codable {
   public let datetime: Swift.String
   public let vo2MlPerMinPerKg: Swift.Int
   public init(datetime: Foundation.Date, vo2MlPerMinPerKg: Swift.Int)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+}
+@objc public class Vo2GranularDataLiterPerMinObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let datetime: Foundation.Date
+  final public let vo2MlPerMinPerKg: Swift.Int
+  @objc public init(datetime: Foundation.Date, vo2MlPerMinPerKg: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 @_hasMissingDesignatedInitializers public class RookBodyDataTransmissionDTO : Swift.Codable {
   public var datetime: Foundation.Date
@@ -373,6 +501,43 @@ extension RookConnectTransmission.RookSleepDataTransmissionDTO {
     @objc deinit
   }
 }
+@_inheritsConvenienceInitializers @objc public class RookSleepDataTransmissionDTOBuilderObjc : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @discardableResult
+  @objc public func addDateTime(date: Foundation.Date) -> RookConnectTransmission.RookSleepDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addMetaData(sex: Swift.String?, gender: Swift.String?, dateOfBirth: Swift.String?, age: Foundation.NSNumber?, country: Swift.String?, state: Swift.String?, city: Swift.String?, ethnicity: Swift.String?, income: Swift.String?, maritalStatus: Swift.String?, education: Swift.String?) -> RookConnectTransmission.RookSleepDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addSleepDate(sleepStartDatetime: Foundation.Date, sleepEndDatetime: Foundation.Date, sleepDate: Foundation.Date) -> RookConnectTransmission.RookSleepDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addSleepTime(sleepDurationSeconds: Foundation.NSNumber?, timeInBedSeconds: Foundation.NSNumber?, lightSleepDurationSeconds: Foundation.NSNumber?, remSleepDurationSeconds: Foundation.NSNumber?, deepSleepDurationSeconds: Foundation.NSNumber?, timeToFallAsleepSeconds: Foundation.NSNumber?, timeAwakeDuringSleepSeconds: Foundation.NSNumber?) -> RookConnectTransmission.RookSleepDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addSleepScore(sleepHealthScore: Foundation.NSNumber?, sleepEfficiency1_100_Score: Foundation.NSNumber?, sleepGoalSeconds: Foundation.NSNumber?, sleepContinuity1_5_Score: Foundation.NSNumber?, sleepContinuity1_5_Rating: Foundation.NSNumber?, sleepQualityRating1_5_Score: Foundation.NSNumber?) -> RookConnectTransmission.RookSleepDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addHearRateData(hrMaxBPM: Foundation.NSNumber?, hrMinimumBPM: Foundation.NSNumber?, hrAvgBPM: Foundation.NSNumber?, hrRestingBPM: Foundation.NSNumber?, hrBasalBPM: Foundation.NSNumber?) -> RookConnectTransmission.RookSleepDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addHRVData(hrvAvgRmssdNumber: Foundation.NSNumber?, hrvAvgSdnnNumber: Foundation.NSNumber?) -> RookConnectTransmission.RookSleepDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addTemperature(temperatureMinimumCelsius: Foundation.NSNumber?, temperatureAvgCelsius: Foundation.NSNumber?, temperatureMaxCelsius: Foundation.NSNumber?, temperatureDeltaCelsius: Foundation.NSNumber?) -> RookConnectTransmission.RookSleepDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addBreathing(breathsMinimumPerMin: Foundation.NSNumber?, breathsAvgPerMin: Foundation.NSNumber?, breathsMaxPerMin: Foundation.NSNumber?) -> RookConnectTransmission.RookSleepDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addSnoring(snoringEventsCountNumber: Foundation.NSNumber?, snoringDurationTotalSeconds: Foundation.NSNumber?) -> RookConnectTransmission.RookSleepDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addGranularHr(data: [RookConnectTransmission.RookHrGranularDataBPMTransmissionObjc]?) -> RookConnectTransmission.RookSleepDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addHRVGranular(hrvSdnnGranularData: [RookConnectTransmission.RookHrvSdnnGranularDatumTransmissionObjc]?, hrvRmssdGranularData: [RookConnectTransmission.RookHrvRmssdGranularDatumTransmissionObjc]?) -> RookConnectTransmission.RookSleepDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addGranularTemperature(temperatureGranularDataCelsius: [RookConnectTransmission.RookTemperatureGranularDataCelsiusTransmissionObjc]?) -> RookConnectTransmission.RookSleepDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addGranularBrething(breathingGranularDataBreathsPerMin: [RookConnectTransmission.RookBreathingGranularDataBreathsPerMinTransmissionObjc]?) -> RookConnectTransmission.RookSleepDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addGranularSnoring(snoringGranularDataSnores: [RookConnectTransmission.RookSnoringGranularDataSnoreTransmissionObjc]?) -> RookConnectTransmission.RookSleepDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addGranularSaturation(saturationGranularDataPercentage: [RookConnectTransmission.RookSaturationGranularDataPercentageTransmissionObjc]?) -> RookConnectTransmission.RookSleepDataTransmissionDTOBuilderObjc
+  public func buildSleepDataTransmission() -> RookConnectTransmission.RookSleepDataTransmissionDTO
+  @objc deinit
+}
 public typealias HTTPHeaders = [Swift.String : Swift.String]
 public enum HTTPTask {
   case request
@@ -415,20 +580,44 @@ public struct RookBreathingGranularDataBreathsPerMinTransmission : Swift.Codable
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+@objc public class RookBreathingGranularDataBreathsPerMinTransmissionObjc : ObjectiveC.NSObject, Swift.Codable {
+  @objc public init(datetime: Foundation.Date, breathsPerMin: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public struct RookHrGranularDataBPMTransmission : Swift.Codable {
   public init(datetime: Foundation.Date, bpm: Swift.Int)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+}
+@objc public class RookHrGranularDataBPMTransmissionObjc : ObjectiveC.NSObject, Swift.Codable {
+  @objc public init(datetime: Foundation.Date, bpm: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 public struct RookHrvRmssdGranularDatumTransmission : Swift.Codable {
   public init(datetime: Foundation.Date, hrvRmssd: Swift.Int)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+@objc public class RookHrvRmssdGranularDatumTransmissionObjc : ObjectiveC.NSObject, Swift.Codable {
+  @objc public init(datetime: Foundation.Date, hrvRmssd: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public struct RookHrvSdnnGranularDatumTransmission : Swift.Codable {
   public init(datetime: Foundation.Date, hrvSdnn: Swift.Int)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+}
+@objc public class RookHrvSdnnGranularDatumTransmissionObjc : ObjectiveC.NSObject, Swift.Codable {
+  @objc public init(datetime: Foundation.Date, hrvSdnn: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 public struct RookNonStructuredData : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
@@ -439,15 +628,39 @@ public struct RookSaturationGranularDataPercentageTransmission : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+@objc public class RookSaturationGranularDataPercentageTransmissionObjc : ObjectiveC.NSObject, Swift.Codable {
+  @objc public init(datetime: Foundation.Date, saturationPercentage: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public struct RookSnoringGranularDataSnoreTransmission : Swift.Codable {
   public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, snoringEventsCountNumber: Swift.Int)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+@objc public class RookSnoringGranularDataSnoreTransmissionObjc : ObjectiveC.NSObject, Swift.Codable {
+  @objc public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, snoringEventsCountNumber: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public struct RookTemperatureGranularDataCelsiusTransmission : Swift.Codable {
   public init(datetime: Foundation.Date, temperatureCelsius: Swift.Int)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+}
+@objc public class RookTemperatureGranularDataCelsiusTransmissionObjc : ObjectiveC.NSObject, Swift.Codable {
+  @objc public init(datetime: Foundation.Date, temperatureCelsius: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+extension RookConnectTransmission.RookPhysicalTransmissionManager {
+  @objc final public func enqueuePhysicalSummaryObjc(with extractionData: Foundation.Data, completion: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
+  @objc final public func enqueuePhysicalSummaryWithPhysicalBuilderObjc(_ builder: RookConnectTransmission.RookPhysicalDataTransmissionDTOBuilderObjc, completion: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
+  @objc final public func getPhysicalSummariesStored(completion: @escaping ([[Swift.String : Any]]?, Swift.Error?) -> Swift.Void)
+  @objc final public func uploadPhysicalSummariesObjc(completion: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
 }
 @_inheritsConvenienceInitializers @objc(RookPhysicalDataExt) public class RookPhysicalDataExt : CoreData.NSManagedObject {
   @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
@@ -597,11 +810,26 @@ public struct BloodGlucoseGranularDataMgPerDL : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+@objc public class BloodGlucoseGranularDataMgPerDLObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let datetime: Foundation.Date
+  final public let bloodGlucoseMgPerDL: Swift.Int
+  @objc public init(datetime: Foundation.Date, bloodGlucoseMgPerDL: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public struct BloodPressureSystolicDiastolicBpNumber : Swift.Codable {
   public let systolicBp: Swift.Int, diastolicBp: Swift.Int
   public init(systolicBp: Swift.Int, diastolicBp: Swift.Int)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+}
+@objc public class BloodPressureSystolicDiastolicBpNumberObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let systolicBp: Swift.Int, diastolicBp: Swift.Int
+  @objc public init(systolicBp: Swift.Int, diastolicBp: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 public struct BloodPressureGranularDataSystolicDiastolicBpNumber : Swift.Codable {
   public let datetime: Swift.String
@@ -610,12 +838,28 @@ public struct BloodPressureGranularDataSystolicDiastolicBpNumber : Swift.Codable
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+@objc public class BloodPressureGranularDataSystolicDiastolicBpNumberObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let datetime: Foundation.Date
+  final public let bloodPressureSystolicDiastolicBpNumber: [RookConnectTransmission.BloodPressureSystolicDiastolicBpNumberObjc]
+  @objc public init(datetime: Foundation.Date, bloodPressureSystolicDiastolicBpNumber: [RookConnectTransmission.BloodPressureSystolicDiastolicBpNumberObjc])
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public struct HydrationAmountGranularDataMlNumber : Swift.Codable {
   public let datetime: Swift.String
   public let intervalDurationSeconds: Swift.Int, hydrationAmountMl: Swift.Int
   public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, hydrationAmountMl: Swift.Int)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+}
+@objc public class HydrationAmountGranularDataMlNumberObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let datetime: Foundation.Date
+  final public let intervalDurationSeconds: Swift.Int, hydrationAmountMl: Swift.Int
+  @objc public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, hydrationAmountMl: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 public struct HydrationLevelGranularDataPercentageNumber : Swift.Codable {
   public let datetime: Swift.String
@@ -624,6 +868,14 @@ public struct HydrationLevelGranularDataPercentageNumber : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+@objc public class HydrationLevelGranularDataPercentageNumberObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let datetime: Foundation.Date
+  final public let intervalDurationSeconds: Swift.Int, hydrationLevelPercentage: Swift.Int
+  @objc public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, hydrationLevelPercentage: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public struct MoodGranularDataScale : Swift.Codable {
   public let datetime: Swift.String
   public let intervalDurationSeconds: Swift.Int, moodScale: Swift.Int
@@ -631,12 +883,28 @@ public struct MoodGranularDataScale : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+@objc public class MoodGranularDataScaleObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let datetime: Foundation.Date
+  final public let intervalDurationSeconds: Swift.Int, moodScale: Swift.Int
+  @objc public init(datetime: Foundation.Date, intervalDurationSeconds: Swift.Int, moodScale: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
 public struct TemperatureGranularDataCelsius : Swift.Codable {
   public let datetime: Swift.String
   public let temperatureCelsius: Swift.Int
   public init(datetime: Foundation.Date, temperatureCelsius: Swift.Int)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+}
+@objc public class TemperatureGranularDataCelsiusObjc : ObjectiveC.NSObject, Swift.Codable {
+  final public let datetime: Foundation.Date
+  final public let temperatureCelsius: Swift.Int
+  @objc public init(datetime: Foundation.Date, temperatureCelsius: Swift.Int)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 extension RookConnectTransmission.RookPhysicalDataTransmissionDTO {
   public class RookPhysicalDataTransmissionDTOBuilder {
@@ -676,8 +944,8 @@ public enum RookTransmissionError : Swift.String, Swift.Error {
     get
   }
 }
-final public class RookBodyTransmissionManager {
-  public init()
+@_inheritsConvenienceInitializers @objc final public class RookBodyTransmissionManager : ObjectiveC.NSObject {
+  @objc override dynamic public init()
   final public func enqueueBodySummary(with extractionData: Foundation.Data, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
   final public func enqueueBodySummary(with bodyDTO: RookConnectTransmission.RookBodyDataTransmissionDTO, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
   final public func getBodySummariesStored(completion: @escaping (Swift.Result<[RookConnectTransmission.RookBodySummaryTransmission], Swift.Error>) -> Swift.Void)
@@ -690,6 +958,37 @@ public struct FoodIntakeNumberExtraction : Swift.Codable {
 }
 public struct URLParameterEncoder : RookConnectTransmission.ParameterEncoder {
   public static func encode(urlRequest: inout Foundation.URLRequest, with parameters: RookConnectTransmission.Parameters) throws
+}
+@_inheritsConvenienceInitializers @objc public class RookBodyDataTransmissionDTOBuilderObjc : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @discardableResult
+  @objc public func addDate(date: Foundation.Date) -> RookConnectTransmission.RookBodyDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addMetaData(sex: Swift.String?, gender: Swift.String?, dateOfBirth: Swift.String?, age: Foundation.NSNumber?, country: Swift.String?, state: Swift.String?, city: Swift.String?, ethnicity: Swift.String?, income: Swift.String?, maritalStatus: Swift.String?, education: Swift.String?) -> RookConnectTransmission.RookBodyDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addBodyHealthScore(bodyHealthScore: Foundation.NSNumber?) -> RookConnectTransmission.RookBodyDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addMesurements(waistCircumferenceCMNumber: Foundation.NSNumber?, hipCircumferenceCMNumber: Foundation.NSNumber?, chestCircumferenceCMNumber: Foundation.NSNumber?) -> RookConnectTransmission.RookBodyDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addBodyComposition(boneCompositionPercentageNumber: Foundation.NSNumber?, muscleCompositionPercentageNumber: Foundation.NSNumber?, weightKgNumber: Foundation.NSNumber?, heightCMNumber: Foundation.NSNumber?, bmiNumber: Foundation.NSNumber?) -> RookConnectTransmission.RookBodyDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addBloodData(bloodGlucoseDayAvgMgPerDLNumber: Foundation.NSNumber?, bloodGlucoseGranularDataMgPerDL: [RookConnectTransmission.BloodGlucoseGranularDataMgPerDLObjc]?, bloodPressureDayAvgSystolicDiastolicBpNumber: [RookConnectTransmission.BloodPressureSystolicDiastolicBpNumberObjc]?, bloodPressureGranularDataSystolicDiastolicBpNumber: [RookConnectTransmission.BloodPressureGranularDataSystolicDiastolicBpNumberObjc]?) -> RookConnectTransmission.RookBodyDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addHydrationData(waterTotalConsumptionMlNumber: Foundation.NSNumber?, hydrationAmountGranularDataMlNumber: [RookConnectTransmission.HydrationAmountGranularDataMlNumberObjc]?, hydrationLevelGranularDataPercentageNumber: [RookConnectTransmission.HydrationLevelGranularDataPercentageNumberObjc]?) -> RookConnectTransmission.RookBodyDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addHeartRateData(hrMaxBPM: Foundation.NSNumber?, hrMinimumBPM: Foundation.NSNumber?, hrAvgBPM: Foundation.NSNumber?, hrRestingBPM: Foundation.NSNumber?, hrGranularDataBPM: [RookConnectTransmission.HrGranularDataBPMObjc]?) -> RookConnectTransmission.RookBodyDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addHRVData(hrvAvgRmssdNumber: Foundation.NSNumber?, hrvAvgSdnnNumber: Foundation.NSNumber?, hrvSdnnGranularDataNumber: [RookConnectTransmission.HrvSdnnGranularDataNumberObjc]?, hrvRmssdGranularDataNumber: [RookConnectTransmission.HrvRmssdGranularDataNumberObjc]?) -> RookConnectTransmission.RookBodyDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addMoodData(moodMinimumScale: Foundation.NSNumber?, moodAvgScale: Foundation.NSNumber?, moodGranularDataScale: [RookConnectTransmission.MoodGranularDataScaleObjc]?, moodMaxScale: Foundation.NSNumber?, moodDeltaScale: Foundation.NSNumber?) -> RookConnectTransmission.RookBodyDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addFoodData(foodIntakeNumber: Swift.Int, caloriesIntakeNumber: Swift.Int, proteinIntakeGNumber: Swift.Int, sugarIntakeGNumber: Swift.Int, fatIntakeGNumber: Swift.Int, transFatIntakeGNumber: Swift.Int, carbohydratesIntakeGNumber: Swift.Int, fiberIntakeGNumber: Swift.Int, alcoholIntakeGNumber: Swift.Int, sodiumIntakeMgNumber: Swift.Int, cholesterolIntakeMgNumber: Swift.Int) -> RookConnectTransmission.RookBodyDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addSaturationData(saturationAvgPercentage: Swift.Int, saturationGranularDataPercentage: [RookConnectTransmission.SaturationGranularDataPercentageObjc]?, vo2MaxMlPerMinPerKg: Swift.Int, vo2GranularDataLiterPerMin: [RookConnectTransmission.Vo2GranularDataLiterPerMinObjc]?) -> RookConnectTransmission.RookBodyDataTransmissionDTOBuilderObjc
+  @discardableResult
+  @objc public func addTemperatureData(temperatureMinimumCelsius: Swift.Int, temperatureAvgCelsius: Swift.Int, temperatureMaxCelsius: Swift.Int, temperatureDeltaCelsius: Swift.Int, temperatureGranularDataCelsius: [RookConnectTransmission.TemperatureGranularDataCelsiusObjc]?) -> RookConnectTransmission.RookBodyDataTransmissionDTOBuilderObjc
+  public func buildBodyDataTransmission() -> RookConnectTransmission.RookBodyDataTransmissionDTO
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers public class RookSleepDataTransmissionDTO : Swift.Codable {
   public var datetime: Swift.String
@@ -761,6 +1060,12 @@ public struct RookTransmissionConfiguration {
   public let clientUUID: Swift.String
   public let secretKey: Swift.String
   public init(urlAPI: Swift.String, clientUUID: Swift.String, secretKey: Swift.String)
+}
+extension RookConnectTransmission.RookBodyTransmissionManager {
+  @objc final public func enqueueBodySummaryObjc(with extractionData: Foundation.Data, completion: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
+  @objc final public func enqueueBosysummaries(with bodyBuilder: RookConnectTransmission.RookBodyDataTransmissionDTOBuilderObjc, completion: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
+  @objc final public func getBodySummariesStoredObjc(completion: @escaping ([[Swift.String : Any]]?, Swift.Error?) -> Swift.Void)
+  @objc final public func uploadBodySummariesObjc(completion: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
 }
 extension RookConnectTransmission.HTTPMethod : Swift.Equatable {}
 extension RookConnectTransmission.HTTPMethod : Swift.Hashable {}
