@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  BodyTransmissionManager.swift
 //  
 //
 //  Created by Francisco Guerrero Escamilla on 04/04/23.
@@ -10,7 +10,7 @@ import RookConnectTransmission
 
 /// The Access point to transmit the body data to the rook server
 ///
-/// User `BodyTransmissionManager` to enque new summaries, get body data stored and upload body data to the server
+/// Use `BodyTransmissionManager` to enque new summaries, get body data stored and upload body data to the server
 public class BodyTransmissionManager {
   
   // MARK:  Properties
@@ -27,7 +27,7 @@ public class BodyTransmissionManager {
   
   /// Stores new body data that comes from the RookAppleHealth SDK
   ///
-  /// Use this method when you want to store data that comes form RookAppleHealth SDK
+  /// Use this method when you want to store data that comes from RookAppleHealth SDK
   public func enqueueBodySummary(with extractionData: Data,
                                  completion: @escaping (Result<Bool, Error>) -> Void) {
     bodyTransmission.enqueueBodySummary(with: extractionData,
@@ -59,7 +59,7 @@ public class BodyTransmissionManager {
   }
   
   /// Returns an array of `RookBodySummaryTransmission` objects stored locally
-  public func getBodySummariesStored(completion: @escaping(Result<[RookBodySummaryTransmission],Error>) -> Void) {
+  public func getBodySummariesStored(completion: @escaping(Result<[RookBodyDataTransmissionDTO],Error>) -> Void) {
     bodyTransmission.getBodySummariesStored(completion: completion)
   }
   

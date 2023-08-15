@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SleepTransmissionManager.swift
 //  
 //
 //  Created by Francisco Guerrero Escamilla on 04/04/23.
@@ -10,7 +10,7 @@ import RookConnectTransmission
 
 /// The Access point to transmit the sleep data to the rook server
 ///
-/// User `SleepTransmissionManager` to enque new summaries, get sleep data stored and upload sleep data to the server
+/// Use `SleepTransmissionManager` to enque new summaries, get sleep data stored and upload sleep data to the server
 public class SleepTransmissionManager {
   
   // MARK:  Properties
@@ -27,7 +27,7 @@ public class SleepTransmissionManager {
   
   /// Stores new sleep data that comes from the RookAppleHealth SDK
   ///
-  /// Use this method when you want to store data that comes form RookAppleHealth SDK
+  /// Use this method when you want to store data that comes from RookAppleHealth SDK
   public func enqueueSleepSummary(with extractionData: Data,
                                   completion: @escaping (Result<Bool, Error>) -> Void) {
     
@@ -37,7 +37,7 @@ public class SleepTransmissionManager {
   
   ///Stores new sleep data using the object `RookSleepDataTransmissionDTO`
   ///
-  ///Use this method when have sleep data from others providers. the bellow example shows how to create a `RookSleepDataTransmissionDTO` object
+  ///Use this method when the sleep data comes from others providers. the bellow example shows how to create a `RookSleepDataTransmissionDTO` object
   ///
   ///     let sleepDTO: RookSleepDataTransmissionDTO = RookSleepDataTransmissionDTO.RookSleepDataTransmissionDTOBuilder()
   ///       .addDateTime(date: Date())
@@ -62,7 +62,7 @@ public class SleepTransmissionManager {
   }
   
   /// Returns an array of `RookSleepSummaryTransmission` objects stored locally
-  public func getSleepSummariesStored(completion: @escaping (Result<[RookSleepSummaryTransmission], Error>) -> Void) {
+  public func getSleepSummariesStored(completion: @escaping (Result<[RookSleepDataTransmissionDTO], Error>) -> Void) {
     sleepManager.getSleepSummariesStored(completion: completion)
   }
   

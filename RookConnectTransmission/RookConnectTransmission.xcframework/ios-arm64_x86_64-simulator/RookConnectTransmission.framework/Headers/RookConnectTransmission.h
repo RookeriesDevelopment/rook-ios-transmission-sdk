@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
 //! Project version number for RookConnectTransmission.
 FOUNDATION_EXPORT double RookConnectTransmissionVersionNumber;
