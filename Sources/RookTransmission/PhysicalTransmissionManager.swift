@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  PhysicalTransmissionManager.swift
 //  
 //
 //  Created by Francisco Guerrero Escamilla on 04/04/23.
@@ -10,7 +10,7 @@ import RookConnectTransmission
 
 /// The Access point to transmit the physical data to the rook server
 ///
-/// User `PhysicalTransmissionManager` to enque new summaries, get physical data stored and upload physical data to the server
+/// Use `PhysicalTransmissionManager` to enque new summaries, get physical data stored and upload physical data to the server
 public class PhysicalTransmissionManager {
   
   // MARK:  Properties
@@ -28,7 +28,7 @@ public class PhysicalTransmissionManager {
   
   /// Stores new physical data that comes from the RookAppleHealth SDK
   ///
-  /// Use this method when you want to store data that comes form RookAppleHealth SDK
+  /// Use this method when you want to store data that comes from RookAppleHealth SDK
   public func enqueuePhysicalSummary(with extractionData: Data,
                                      completion: @escaping (Result<Bool, Error>) -> Void) {
     physicalTransmission.enqueuePhysicalSummary(with: extractionData,
@@ -37,7 +37,7 @@ public class PhysicalTransmissionManager {
   
   ///Stores new physical data using the object `RookSleepDataTransmissionDTO`
   ///
-  ///Use this method when have physical data from others providers. the bellow example shows how to create a `RookPhysicalDataTransmissionDTO` object
+  ///Use this method when the physical data comes from others providers. the bellow example shows how to create a `RookPhysicalDataTransmissionDTO` object
   ///
   ///     let physicalDTO: RookPhysicalDataTransmissionDTO = RookPhysicalDataTransmissionDTO.RookPhysicalDataTransmissionDTOBuilder()
   ///     .addDateTime(date: Date())
@@ -67,7 +67,7 @@ public class PhysicalTransmissionManager {
   }
   
   /// Returns an array of `RookPhysicalSummaryTransmission` objects stored locally
-  public func getPhysicalSummariesStored(completion: @escaping (Result<[RookPhysicalSummaryTransmission], Error>) -> Void) {
+  public func getPhysicalSummariesStored(completion: @escaping (Result<[RookPhysicalDataTransmissionDTO], Error>) -> Void) {
     physicalTransmission.getPhysicalSummariesStored(completion: completion)
   }
   
