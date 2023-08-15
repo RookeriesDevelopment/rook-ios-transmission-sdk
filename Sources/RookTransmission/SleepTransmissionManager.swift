@@ -23,7 +23,7 @@ public class SleepTransmissionManager {
     
   }
   
-  // MARK:  Helepers
+  // MARK:  Helpers
   
   /// Stores new sleep data that comes from the RookAppleHealth SDK
   ///
