@@ -550,6 +550,7 @@ public struct RookTemperatureGranularTransmissionDTO {
   @objc final public func setConfiguration(with urlAPI: Swift.String, clientUUID: Swift.String, secretKey: Swift.String)
   @objc final public func setUserId(with id: Swift.String?)
   @objc final public func initRookTransmission()
+  final public func initRookTransmission(completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
   @objc final public func isTransmissionAvailable() -> Swift.Bool
   @objc deinit
 }
@@ -901,6 +902,11 @@ final public class RookHrEventTransmissionManager {
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc final public class RookTimeZoneManagerObjc : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc final public func uploadUserTimeZone(timezone: Swift.String, offset: Swift.Int, completion: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
+  @objc deinit
 }
 @objc public class HydrationAmountGranularDataMlNumberObjc : ObjectiveC.NSObject, Swift.Codable {
   final public let datetime: Foundation.Date
@@ -1337,6 +1343,7 @@ public enum RookTransmissionError : Swift.String, Swift.Error {
   case invalidEventData
   case registerNotFound
   case datetimeNil
+  case clientUUIDEmpty
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -1530,6 +1537,11 @@ extension RookConnectTransmission.RookBodyTransmissionManager {
   @objc final public func enqueueBosysummaries(with bodyBuilder: RookConnectTransmission.RookBodyDataTransmissionDTOBuilderObjc, completion: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
   @objc final public func getBodySummariesStoredObjc(completion: @escaping ([[Swift.String : Any]]?, Swift.Error?) -> Swift.Void)
   @objc final public func uploadBodySummariesObjc(completion: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
+}
+final public class RookTimeZoneManager {
+  public init()
+  final public func uploadUserTimeZone(timezone: Swift.String, offset: Swift.Int, completion: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)
+  @objc deinit
 }
 @objc public class BloodGlucoseGranularDataMgPerDLObjc : ObjectiveC.NSObject, Swift.Codable {
   final public let datetime: Foundation.Date
