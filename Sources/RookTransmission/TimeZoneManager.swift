@@ -8,6 +8,9 @@
 import Foundation
 import RookConnectTransmission
 
+/// The Access point to transmit current time zone
+///
+/// Use `TimeZoneManager` to upload the current user's time zone
 public final class TimeZoneManager {
   
   // MARK:  Properties
