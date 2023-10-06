@@ -15,7 +15,7 @@ public class TransmissionSettings {
   
   // MARK:  Properties
   
-  ///Returns the shated TransmissionSettings object
+  ///Returns the shared TransmissionSettings object
   public static let shared: TransmissionSettings = TransmissionSettings()
   
   private let rookSettings: RookTransmissionSettings = RookTransmissionSettings.shared
@@ -23,21 +23,28 @@ public class TransmissionSettings {
    
   ///Sets the configuration with `RookTransmissionConfiguration` object
   ///
-  ///    let configuration = RookTransmissionConfiguration(urlAPI: "https://api.rook-connect.dev",
-  ///                                                      clientUUID: "11111-47c1-4477-a8ce-2322222",
+  ///    let configuration = RookTransmissionConfiguration(clientUUID: "11111-47c1-4477-a8ce-2322222",
   ///                                                      secretKey: "QDWIHOQW21212JN2JKN")
   ///     TransmissionSettings.shared.setConfiguration(configuration)
   ///
   ///
-  ///- parameter configutation : `RookTransmissionConfiguration` should contains the urlAPI, clientUUID and secretKey.
-  public func setConfiguration(_ configutation: RookTransmissionConfiguration) {
-    rookSettings.setConfiguration(configutation)
+  ///- parameter configuration : `RookTransmissionConfiguration` should contains the urlAPI, clientUUID and secretKey.
+  public func setConfiguration(_ configuration: RookTransmissionConfiguration) {
+    rookSettings.setConfiguration(configuration)
   }
-  
+
+  /// Sets the environment.
+  ///
+  /// This value is important when you want to upload data to the server.
+  ///
+  ///  - parameter environment: `RookTransmissionEnvironment?` enum that contains sandbox and production options.
+  public func setEnvironment(_ environment: RookTransmissionEnvironment) {
+    rookSettings.setEnvironmnet(environment)
+  }
   
   /// Sets the user id.
   ///
-  /// This value is importa when you want to upload data to the server.
+  /// This value is important when you want to upload data to the server.
   ///
   ///  - parameter id: `String?` use the id of the user
   public func setUserId(_ id: String?) {
@@ -45,7 +52,7 @@ public class TransmissionSettings {
   }
   
   
-  /// Initializes the sdk and validates if the credetials are correct
+  /// Initializes the sdk and validates if the credentials are correct
   public func initRookTransmission() {
     rookSettings.initRookTransmission()
   }

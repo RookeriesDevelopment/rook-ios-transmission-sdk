@@ -27,7 +27,7 @@ public final class ActivityEventTransmissionManager {
   /// Stores new activity events that comes from RookAppleHealth SDK
   ///
   /// Use this method when you want to store data that comes from RookAppleHealth SDK
-  public func enqueActivityEvent(_ eventData: Data,
+  public func enqueueActivityEvent(_ eventData: Data,
                                  completion: @escaping (Result<Bool,Error>) -> Void) {
     self.activityManager.enqueActivityEvent(eventData, completion: completion)
   }
@@ -35,7 +35,7 @@ public final class ActivityEventTransmissionManager {
   ///Stores new physical data using an array of `RookActivityEventTransmission` objects
   ///
   ///Use this method when the activity events comes from other data source.
-  public func enqueueActitivtyEvents(_ events: [RookActivityEventTransmission],
+  public func enqueueActivityEvents(_ events: [RookActivityEventTransmission],
                                      completion: @escaping (Result<Bool, Error>) -> Void) {
     self.activityManager.enqueueActitivtyEvents(events, completion: completion)
   }

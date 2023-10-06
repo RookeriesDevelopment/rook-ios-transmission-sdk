@@ -10,7 +10,7 @@ import RookConnectTransmission
 
 /// The Access point to transmit the sleep data to the rook server
 ///
-/// Use `SleepTransmissionManager` to enque new summaries, get sleep data stored and upload sleep data to the server
+/// Use `SleepTransmissionManager` to enqueue new summaries, get sleep data stored and upload sleep data to the server
 public class SleepTransmissionManager {
   
   // MARK:  Properties
