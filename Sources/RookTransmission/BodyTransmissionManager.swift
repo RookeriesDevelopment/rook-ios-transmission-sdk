@@ -10,7 +10,7 @@ import RookConnectTransmission
 
 /// The Access point to transmit the body data to the rook server
 ///
-/// Use `BodyTransmissionManager` to enque new summaries, get body data stored and upload body data to the server
+/// Use `BodyTransmissionManager` to enqueue new summaries, get body data stored and upload body data to the server
 public class BodyTransmissionManager {
   
   // MARK:  Properties
