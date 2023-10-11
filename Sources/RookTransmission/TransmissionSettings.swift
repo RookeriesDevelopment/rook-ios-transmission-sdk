@@ -39,7 +39,7 @@ public class TransmissionSettings {
   ///
   ///  - parameter environment: `RookTransmissionEnvironment?` enum that contains sandbox and production options.
   public func setEnvironment(_ environment: RookTransmissionEnvironment) {
-    rookSettings.setEnvironmnet(environment)
+    rookSettings.setEnvironment(environment)
   }
   
   /// Sets the user id.
