@@ -12,6 +12,9 @@ This SDK allows to transmit Health Data to the ROOK server.
 - Store, retrieve and upload heart rate events
 - Store, retrieve and upload oxygenation events
 - Store, retrieve and upload activity events
+- Store, retrieve and upload temperature events
+- Store, retrieve and upload blood pressure events
+- Store, retrieve and upload blood glucose events
 - Upload current user's time zone 
 
 ## Installation
@@ -76,9 +79,12 @@ There are six main classes responsible for managing health data. Each class cont
 | `SleepTransmissionManager` | This class manages the sleep data. |
 | `PhysicalTransmissionManager` | This class manages the physical data. |
 | `BodyTransmissionManager` | This class manages the body data. |
-| `HeartRateEventTransmissionManager` | This class manages the body data. |
-| `OxygenationEventTransmissionManager` | This class manages the body data. |
-| `ActivityEventTransmissionManager` | This class manages the body data. |
+| `HeartRateEventTransmissionManager` | This class manages the heart rate events. |
+| `OxygenationEventTransmissionManager` | This class manages the oxygenation events. |
+| `ActivityEventTransmissionManager` | This class manages the activity events. |
+| `TemperatureEventTransmissionManager` | This class manages the temperature events. |
+| `BloodPressureEventTransmissionManager` | This class manages the blood pressure events. |
+| `BloodGlucoseEventTransmissionManager` | This class manages the blood glucose events. |
 
 #### SleepTransmissionManager
 
@@ -282,7 +288,9 @@ func uploadBodyData() {
 }
 ```
 
-#### HeartRateEventTransmissionManager
+## Events
+
+### HeartRateEventTransmissionManager
 
 The Access point to transmit the heart rate events to the rook server
 
@@ -296,7 +304,7 @@ Use `HeartRateEventTransmissionManager` to store, retrieve and upload heart rate
 | `public func getBodyHrEventsStored(completion: @escaping (Result<[RookHeartRateEventTransmission], Error>) -> Void)` | Returns an array of `RookHeartRateEventTransmission` objects stored locally when the user was not in an activity session. |
 | `public func uploadHrEvents(completion: @escaping (Result<Bool, Error>) -> Void)` | Uploads all the heart rate events stored locally and deletes all that were uploaded successfully |
 
-#### OxygenationEventTransmissionManager
+### OxygenationEventTransmissionManager
 
 The Access point to transmit the oxygenation events to the rook server
 
@@ -310,7 +318,7 @@ Use `OxygenationEventTransmissionManager`  to store new, retrieve and upload oxy
 | `public func getOxygenationEvents(completion: @escaping (Result<[RookOxygenationEventTransmission], Error>) -> Void)` | Returns an array of `RookOxygenationEventTransmission` objects stored locally when the user was in an activity session |
 | `public func uploadEvent(completion: @escaping (Result<Bool, Error>) -> Void)` | Uploads all the oxygenation events stored locally and deletes all that  were uploaded successfully. |
 
-#### ActivityEventTransmissionManager
+### ActivityEventTransmissionManager
 
 The Access point to transmit the activity events to the rook server
 
@@ -323,7 +331,46 @@ Use `ActivityEventTransmissionManager` to store new, retrieve and upload activit
 | `public func getActivityEvents(completion: @escaping (Result<[RookActivityEventTransmission], Error>) -> Void)` | Returns an array of `RookActivityEventTransmission` objects stored locally. |
 | `public func uploadEvents(completion: @escaping (Result<Bool, Error>) -> Void)` | Uploads all the activity events stored locally and deletes all that were uploaded successfully. |
 
-#### TimeZoneManager
+### TemperatureEventTransmissionManager
+
+The Access point to transmit the temperature events to the rook server
+
+Use `TemperatureEventTransmissionManager` to store new, retrieve and upload temperature events.
+
+| Function | Description |
+| -------- | ----------- |
+| `public func enqueueTemperatureEvent(_ eventData: Data, completion: @escaping (Result<Bool,Error>) -> Void)` | Stores new temperature events that comes from RookAppleHealth SDK. |
+| `public func enqueueTemperatureEvents(_ events: [RookTemperatureEventTransmission], completion: @escaping (Result<Bool, Error>) -> Void)` | Stores all the new temperature events using an array of `RookTemperatureEventTransmission` objects. |
+| `public func getTemperatureEvents(completion: @escaping (Result<[RookTemperatureEventTransmission], Error>) -> Void)` | Returns an array of `RookTemperatureEventTransmission` objects stored locally. |
+| `public func uploadEvents(completion: @escaping (Result<Bool, Error>) -> Void)` | Uploads all the temperature events stored locally and deletes all that were uploaded successfully. |
+
+### BloodPressureEventTransmissionManager
+
+The Access point to transmit the blood pressure events to the rook server
+
+Use `BloodPressureEventTransmissionManager` to store new, retrieve and upload blodd pressure events.
+
+| Function | Description |
+| -------- | ----------- |
+| `public func enqueueBloodPressureEvent(_ eventData: Data, completion: @escaping (Result<Bool,Error>) -> Void)` | Stores new blood pressure events that comes from RookAppleHealth SDK. |
+| `public func enqueueBloodPressureEvents(_ events: [RookBloodPressureEventTransmission], completion: @escaping (Result<Bool, Error>) -> Void)` | Stores all the new blood pressure events using an array of `RookBloodPressureEventTransmission` objects. |
+| `public func getBloodPressureEvents(completion: @escaping (Result<[RookBloodPressureEventTransmission], Error>) -> Void)` | Returns an array of `RookBloodPressureEventTransmission` objects stored locally. |
+| `public func uploadEvents(completion: @escaping (Result<Bool, Error>) -> Void)` | Uploads all the blood pressure events stored locally and deletes all that were uploaded successfully. |
+
+### GlucoseEventTransmissionManager
+
+The Access point to transmit the blood glucose events to the rook server
+
+Use `GlucoseEventTransmissionManager` to store new, retrieve and upload blood glucose events.
+
+| Function | Description |
+| -------- | ----------- |
+| `public func enqueueBloodPressureEvent(_ eventData: Data, completion: @escaping (Result<Bool,Error>) -> Void)` | Stores new blood glucose events that comes from RookAppleHealth SDK. |
+| `public func enqueueBloodPressureEvents(_ events: [RookGlucoseEventTransmission], completion: @escaping (Result<Bool, Error>) -> Void)` | Stores all the new blood glucose events using an array of `RookGlucoseEventTransmission` objects. |
+| `public func getBloodPressureEvents(completion: @escaping (Result<[RookGlucoseEventTransmission], Error>) -> Void)` | Returns an array of `RookGlucoseEventTransmission` objects stored locally. |
+| `public func uploadEvents(completion: @escaping (Result<Bool, Error>) -> Void)` | Uploads all the blood glucose events stored locally and deletes all that were uploaded successfully. |
+
+## TimeZoneManager
 
 The Access point to transmit current time zone
 

@@ -13,3 +13,11 @@
 * enqueueActivityEvent was renamed to fix spelling
 
 * enqueueActivityEvents was renamed to fix spelling
+
+## 1.0.6
+
+* BloodPressureEventTransmissionManager class was added
+
+* GlucoseEventTransmissionManager class was added
+
+* TemperatureEventTransmissionManager class was added
